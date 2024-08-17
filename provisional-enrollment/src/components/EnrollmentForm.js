@@ -6,7 +6,7 @@ const EnrollmentForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [soldCount, setSoldCount] = useState(10);
+    const [soldCount, setSoldCount] = useState(10); // Replace with your logic
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -87,7 +87,7 @@ const EnrollmentForm = () => {
                     />
                 </div>
                 <div className="payment-button">
-                    <form id="razorpay-form">
+                    <form id="razorpay-form" onClick={handlePayNow}>
                         <script 
                             src="https://checkout.razorpay.com/v1/payment-button.js"
                             data-payment_button_id="pl_Oly4SGpv6WDzJr" 
