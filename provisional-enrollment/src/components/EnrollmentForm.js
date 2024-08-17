@@ -1,62 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import '../App.css';
+import React, { useEffect, useState } from 'react';
+import './App.css';
 
 const EnrollmentForm = () => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
     const [soldCount, setSoldCount] = useState(10);
 
     useEffect(() => {
+        // Dynamically add the Razorpay script
+        const script = document.createElement('script');
+        script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+        script.setAttribute("data-payment_button_id", "pl_Oly4SGpv6WDzJr");
+        script.async = true;
+        document.getElementById("razorpay-form").appendChild(script);
+
+        // Auto-populate email and phone fields from query parameters
         const urlParams = new URLSearchParams(window.location.search);
-        const nameParam = urlParams.get('name');
-        const emailParam = urlParams.get('email');
-        const phoneParam = urlParams.get('phone');
-
-        if (emailParam && phoneParam) {
-            setName(nameParam);
-            setEmail(emailParam);
-            setPhone(phoneParam);
-            submitToGoogleSheet(nameParam, emailParam, phoneParam);
-        } else {
-            window.location.href = 'https://form.typeform.com/to/Ko438oSw';
-        }
+        document.getElementById('email').value = urlParams.get('email') || '';
+        document.getElementById('phone').value = urlParams.get('phone') || '';
     }, []);
-
-    const submitToGoogleSheet = async (name, email, phone) => {
-        const sheetId = '1dVdryyzNxhtwS3QY0amFf65XT6VJCVY1gp1nlgmXmVo';
-        const range = 'Hello!A:D';
-        const values = [[new Date().toLocaleString(), name, email, phone]];
-
-        const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}:append?valueInputOption=USER_ENTERED`;
-        const config = {
-            headers: {
-                Authorization: `Bearer ${process.env.REACT_APP_GOOGLE_SERVICE_ACCOUNT_KEY}`,
-            },
-        };
-
-        try {
-            await axios.post(url, { values }, config);
-        } catch (error) {
-            console.error('Error appending to Google Sheets:', error);
-        }
-    };
-
-    const handlePayNow = () => {
-        setSoldCount(soldCount + 1);
-    };
 
     return (
         <div className="container">
             <div className="enrollment-details">
-                <img src="https://directus.crio.do/assets/b647b599-ae7a-41a4-98d2-d428a64cc768.webp" alt="Crio Logo" className="logo" />
+                <img src="https://directus.crio.do/assets/b647b599-ae7a-41a4-98d2-d428a64cc768.webp" alt="Crio.Do" width="100px" />
                 <h1>Provisional Enrollment</h1>
-                <p>{soldCount} sold out of 50</p>
+                <p><strong>{soldCount}</strong> sold out of <strong>50</strong></p>
                 <div className="progress-bar">
                     <div className="progress" style={{ width: `${(soldCount / 50) * 100}%` }}></div>
                 </div>
-                <p>{soldCount} supporters</p>
+                <p><strong>{soldCount}</strong> supporters</p>
                 <div className="contact-info">
                     <p><strong>Contact Us:</strong></p>
                     <p>📧 ping@criodo.com</p>
@@ -71,29 +42,15 @@ const EnrollmentForm = () => {
             <div className="payment-details">
                 <h2>Payment Details</h2>
                 <div className="form-group">
-                    <label>Email</label>
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
+                    <label htmlFor="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required />
                 </div>
                 <div className="form-group">
-                    <label>Phone</label>
-                    <input
-                        type="tel"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                    />
+                    <label htmlFor="phone">Phone</label>
+                    <input type="tel" id="phone" placeholder="Enter your phone number" required />
                 </div>
-                <div className="payment-button">
-                    <form id="razorpay-form">
-                        <script 
-                            src="https://checkout.razorpay.com/v1/payment-button.js"
-                            data-payment_button_id="pl_Oly4SGpv6WDzJr"
-                            async> 
-                        </script>
-                    </form>
+                <div className="payment-button" id="razorpay-form">
+                    {/* Razorpay button will be appended here */}
                 </div>
             </div>
         </div>
