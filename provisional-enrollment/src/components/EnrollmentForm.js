@@ -3,35 +3,48 @@ import axios from 'axios';
 import '../App.css';
 
 const EnrollmentForm = () => {
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [soldCount, setSoldCount] = useState(10);
+    const [soldCount, setSoldCount] = useState(10); // Initial count
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
-        setEmail(urlParams.get('email') || '');
-        setPhone(urlParams.get('phone') || '');
+        const name = urlParams.get('name');
+        const email = urlParams.get('email');
+        const phone = urlParams.get('phone');
 
-        // Automatically increment the sold count when the form is loaded
-        setSoldCount(soldCount + 1);
+        if (email && phone) {
+            setName(name);
+            setEmail(email);
+            setPhone(phone);
+            submitToGoogleSheet(name, email, phone);
+        } else {
+            window.location.href = 'https://form.typeform.com/to/Ko438oSw';
+        }
+
+        // Load Razorpay script dynamically
+        const script = document.createElement('script');
+        script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+        script.setAttribute('data-payment_button_id', 'pl_Oly4SGpv6WDzJr');
+        script.async = true;
+        document.getElementById('razorpay-form').appendChild(script);
     }, []);
 
-    const handleSubmit = async () => {
+    const submitToGoogleSheet = async (name, email, phone) => {
+        const sheetId = '1dVdryyzNxhtwS3QY0amFf65XT6VJCVY1gp1nlgmXmVo';
+        const range = 'Hello!A:D';
+        const values = [[new Date().toLocaleString(), name, email, phone]];
+
+        const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}:append?valueInputOption=USER_ENTERED`;
+        const config = {
+            headers: {
+                Authorization: `Bearer ${process.env.REACT_APP_GOOGLE_SERVICE_ACCOUNT_KEY}`,
+            },
+        };
+
         try {
-            const sheetId = '1dVdryyzNxhtwS3QY0amFf65XT6VJCVY1gp1nlgmXmVo';
-            const range = 'Hello!A:D';
-            const values = [[new Date().toLocaleString(), email, phone]];
-
-            const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}:append?valueInputOption=USER_ENTERED`;
-            const config = {
-                headers: {
-                    Authorization: `Bearer ${process.env.REACT_APP_GOOGLE_SERVICE_ACCOUNT_KEY}`,
-                },
-            };
-
             await axios.post(url, { values }, config);
-            // After successful submission, trigger the Razorpay payment
-            document.getElementById('razorpay-form').submit();
         } catch (error) {
             console.error('Error appending to Google Sheets:', error);
         }
@@ -77,13 +90,7 @@ const EnrollmentForm = () => {
                     />
                 </div>
                 <div className="payment-button">
-                    <form id="razorpay-form" onSubmit={handleSubmit}>
-                        <script 
-                            src="https://checkout.razorpay.com/v1/payment-button.js"
-                            data-payment_button_id="pl_Oly4SGpv6WDzJr" 
-                            async> 
-                        </script>
-                    </form>
+                    <form id="razorpay-form"></form>
                 </div>
             </div>
         </div>
