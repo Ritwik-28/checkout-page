@@ -20,7 +20,7 @@ body {
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 48%;
+  width: 45%;
 }
 
 .enrollment-details h1 {
@@ -42,37 +42,6 @@ body {
   background-color: #3f51b5;
   height: 100%;
   border-radius: 20px;
-  width: 20%;
-}
-
-.supporters {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.contact-info,
-.terms {
-  font-size: 14px;
-  margin-top: 20px;
-}
-
-.terms {
-  margin-top: 40px;
-}
-
-.contact-info p {
-  margin: 5px 0;
-}
-
-.contact-info p:nth-child(2) {
-  color: #ffde03;
-}
-
-.payment-details h2 {
-  font-size: 20px;
-  margin-bottom: 20px;
-  color: #00ff84;
 }
 
 .form-group {
@@ -98,4 +67,14 @@ body {
 .payment-button {
   text-align: center;
   margin-top: 20px;
+}
+
+.razorpay-button {
+  background-color: #ffde03;
+  color: #142d36;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }

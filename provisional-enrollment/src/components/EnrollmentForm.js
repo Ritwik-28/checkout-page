@@ -3,29 +3,38 @@ import axios from 'axios';
 import '../App.css';
 
 const EnrollmentForm = () => {
-    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [soldCount, setSoldCount] = useState(10); 
+    const [soldCount, setSoldCount] = useState(10);
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
-        const name = urlParams.get('name');
-        const email = urlParams.get('email');
-        const phone = urlParams.get('phone');
+        setEmail(urlParams.get('email') || '');
+        setPhone(urlParams.get('phone') || '');
 
-        if (email && phone) {
-            setName(name);
-            setEmail(email);
-            setPhone(phone);
-        } else {
-            window.location.href = 'https://form.typeform.com/to/Ko438oSw';
-        }
+        // Automatically increment the sold count when the form is loaded
+        setSoldCount(soldCount + 1);
     }, []);
 
-    const handlePayNow = () => {
-        // Increase the count for demo purposes
-        setSoldCount(soldCount + 1);
+    const handleSubmit = async () => {
+        try {
+            const sheetId = '1dVdryyzNxhtwS3QY0amFf65XT6VJCVY1gp1nlgmXmVo';
+            const range = 'Hello!A:D';
+            const values = [[new Date().toLocaleString(), email, phone]];
+
+            const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}:append?valueInputOption=USER_ENTERED`;
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${process.env.REACT_APP_GOOGLE_SERVICE_ACCOUNT_KEY}`,
+                },
+            };
+
+            await axios.post(url, { values }, config);
+            // After successful submission, trigger the Razorpay payment
+            document.getElementById('razorpay-form').submit();
+        } catch (error) {
+            console.error('Error appending to Google Sheets:', error);
+        }
     };
 
     return (
@@ -45,7 +54,8 @@ const EnrollmentForm = () => {
                 </div>
                 <div className="terms">
                     <p><strong>Terms & Conditions:</strong></p>
-                    <p>The provisional enrollment fees of ₹1,000/- is to block your scholarship for a period of 24 Hours and shall not be returned in case the learner decides to not move forward with the program.<br /><br />You agree to share information entered on this page with Qift Solutech Private Limited (owner of this page) and Razorpay, adhering to applicable laws.</p>
+                    <p>The provisional enrollment fees of ₹1,000/- is to block your scholarship for a period of 24 Hours and shall not be returned in case the learner decides to not move forward with the program.</p>
+                    <p>You agree to share information entered on this page with Qift Solutech Private Limited (owner of this page) and Razorpay, adhering to applicable laws.</p>
                 </div>
             </div>
             <div className="payment-details">
@@ -67,8 +77,12 @@ const EnrollmentForm = () => {
                     />
                 </div>
                 <div className="payment-button">
-                    <form>
-                        <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Oly4SGpv6WDzJr" async></script>
+                    <form id="razorpay-form" onSubmit={handleSubmit}>
+                        <script 
+                            src="https://checkout.razorpay.com/v1/payment-button.js"
+                            data-payment_button_id="pl_Oly4SGpv6WDzJr" 
+                            async> 
+                        </script>
                     </form>
                 </div>
             </div>
