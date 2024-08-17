@@ -6,7 +6,7 @@ const EnrollmentForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [soldCount, setSoldCount] = useState(10); // Initial count
+    const [soldCount, setSoldCount] = useState(10); 
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -18,35 +18,14 @@ const EnrollmentForm = () => {
             setName(name);
             setEmail(email);
             setPhone(phone);
-            submitToGoogleSheet(name, email, phone);
         } else {
             window.location.href = 'https://form.typeform.com/to/Ko438oSw';
         }
     }, []);
 
-    const submitToGoogleSheet = async (name, email, phone) => {
-        const sheetId = '1dVdryyzNxhtwS3QY0amFf65XT6VJCVY1gp1nlgmXmVo';
-        const range = 'Hello!A:D';
-        const values = [[new Date().toLocaleString(), name, email, phone]];
-
-        const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}:append?valueInputOption=USER_ENTERED`;
-        const config = {
-            headers: {
-                Authorization: `Bearer ${process.env.REACT_APP_GOOGLE_SERVICE_ACCOUNT_KEY}`,
-            },
-        };
-
-        try {
-            await axios.post(url, { values }, config);
-        } catch (error) {
-            console.error('Error appending to Google Sheets:', error);
-        }
-    };
-
-    const handlePayNow = async () => {
-        await submitToGoogleSheet(name, email, phone);
+    const handlePayNow = () => {
+        // Increase the count for demo purposes
         setSoldCount(soldCount + 1);
-        document.getElementById('razorpay-form').submit();
     };
 
     return (
@@ -88,12 +67,8 @@ const EnrollmentForm = () => {
                     />
                 </div>
                 <div className="payment-button">
-                    <form id="razorpay-form">
-                        <script
-                            src="https://checkout.razorpay.com/v1/payment-button.js"
-                            data-payment_button_id="pl_Oly4SGpv6WDzJr"
-                            async
-                        ></script>
+                    <form>
+                        <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Oly4SGpv6WDzJr" async></script>
                     </form>
                 </div>
             </div>

@@ -20,7 +20,7 @@ body {
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 45%;
+  width: 48%;
 }
 
 .enrollment-details h1 {
@@ -42,16 +42,13 @@ body {
   background-color: #3f51b5;
   height: 100%;
   border-radius: 20px;
+  width: 20%;
 }
 
 .supporters {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-}
-
-.supporters img {
-  margin-right: 10px;
 }
 
 .contact-info,
@@ -89,7 +86,7 @@ body {
 }
 
 .form-group input {
-  width: 80%; /* Decreased width */
+  width: 100%;
   padding: 10px;
   font-size: 14px;
   border: 1px solid #324a52;
