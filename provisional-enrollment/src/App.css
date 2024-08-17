@@ -18,20 +18,20 @@ body {
 .payment-details {
   background-color: #142d36;
   border-radius: 8px;
-  padding: 20px;
+  padding: 15px; /* Reduced padding */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 45%;
 }
 
 .enrollment-details h1 {
   font-size: 24px;
-  margin-bottom: 20px;
+  margin-bottom: 10px; /* Reduced margin */
   color: #00ff84;
 }
 
 .logo {
-  width: 100px; /* Increased logo size */
-  margin-bottom: 20px;
+  width: 70px; /* Increased logo size */
+  margin-bottom: 10px; /* Reduced margin */
 }
 
 .progress-bar {
@@ -40,7 +40,7 @@ body {
   height: 10px;
   width: 100%;
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 10px; /* Reduced margin */
 }
 
 .progress {
@@ -50,42 +50,20 @@ body {
   width: 20%;
 }
 
-.supporters {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.supporters img {
-  margin-right: 10px;
-}
-
 .contact-info,
 .terms {
   font-size: 14px;
-  margin-top: 20px;
-}
-
-.terms {
-  margin-top: 40px;
-}
-
-.contact-info p {
-  margin: 5px 0;
-}
-
-.contact-info p:nth-child(2) {
-  color: #ffde03;
+  margin-top: 10px; /* Reduced margin */
 }
 
 .payment-details h2 {
   font-size: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px; /* Reduced margin */
   color: #00ff84;
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 10px; /* Reduced margin */
 }
 
 .form-group label {
@@ -96,7 +74,7 @@ body {
 
 .form-group input {
   width: 100%;
-  padding: 10px;
+  padding: 8px; /* Reduced padding */
   font-size: 14px;
   border: 1px solid #324a52;
   border-radius: 5px;
@@ -106,7 +84,7 @@ body {
 
 .payment-button {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 15px; /* Reduced margin */
 }
 
 .razorpay-button {
