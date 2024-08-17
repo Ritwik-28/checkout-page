@@ -9,7 +9,7 @@ body {
 .container {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 10px; /* Reduced padding */
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -30,7 +30,7 @@ body {
 }
 
 .logo {
-  width: 50px; /* Ensure logo isn't too large */
+  width: 100px; /* Increased logo size */
   margin-bottom: 20px;
 }
 
