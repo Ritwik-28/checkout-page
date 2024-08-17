@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../App.css';
 
 const EnrollmentForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [soldCount, setSoldCount] = useState(10);
+    const [soldCount, setSoldCount] = useState(10); // Initial count
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -17,11 +18,11 @@ const EnrollmentForm = () => {
             setName(name);
             setEmail(email);
             setPhone(phone);
-            submitToGoogleSheet(name, email, phone, null, null);
         } else {
             window.location.href = 'https://form.typeform.com/to/Ko438oSw';
         }
 
+        // Load Razorpay script dynamically
         const script = document.createElement('script');
         script.src = "https://checkout.razorpay.com/v1/payment-button.js";
         script.setAttribute('data-payment_button_id', 'pl_Oly4SGpv6WDzJr');
@@ -29,9 +30,8 @@ const EnrollmentForm = () => {
         document.getElementById('razorpay-form').appendChild(script);
     }, []);
 
-    const submitToGoogleSheet = async (name, email, phone, type = 'hello') => {
-        const url = 'https://script.google.com/macros/s/AKfycbzU0h-iac3KO_k4gKVPID1lAWdkcvsivjex3VFxWYGYxlXiDI-6QeoG6rfeRHYVEH6c/exec';
-    
+    const handlePayNowClick = async () => {
+        const url = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
         try {
             const response = await fetch(url, {
                 method: 'POST',
@@ -39,7 +39,7 @@ const EnrollmentForm = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ name, email, phone, type })
+                body: JSON.stringify({ name, email, phone, type: 'payment' })
             });
             const result = await response.json();
             console.log('Success:', result);
@@ -47,11 +47,6 @@ const EnrollmentForm = () => {
             console.error('Error appending to Google Sheets:', error);
         }
     };
-    
-    // Call this function when the user clicks "Pay Now"
-    const handlePayNowClick = () => {
-        submitToGoogleSheet(null, email, phone, 'payment');
-    };    
 
     return (
         <div className="container">
@@ -93,7 +88,7 @@ const EnrollmentForm = () => {
                     />
                 </div>
                 <div className="payment-button">
-                    <form id="razorpay-form" onClick={handlePaymentSuccess}></form>
+                    <form id="razorpay-form" onClick={handlePayNowClick}></form>
                 </div>
             </div>
         </div>
