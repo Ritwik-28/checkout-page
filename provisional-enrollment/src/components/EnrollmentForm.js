@@ -6,7 +6,7 @@ const EnrollmentForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [soldCount, setSoldCount] = useState(10); // Initial count
+    const [soldCount, setSoldCount] = useState(10); 
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -23,7 +23,6 @@ const EnrollmentForm = () => {
             window.location.href = 'https://form.typeform.com/to/Ko438oSw';
         }
 
-        // Load Razorpay script dynamically
         const script = document.createElement('script');
         script.src = "https://checkout.razorpay.com/v1/payment-button.js";
         script.setAttribute('data-payment_button_id', 'pl_Oly4SGpv6WDzJr');
@@ -32,19 +31,13 @@ const EnrollmentForm = () => {
     }, []);
 
     const submitToGoogleSheet = async (name, email, phone) => {
-        const sheetId = '1dVdryyzNxhtwS3QY0amFf65XT6VJCVY1gp1nlgmXmVo';
-        const range = 'Hello!A:D';
-        const values = [[new Date().toLocaleString(), name, email, phone]];
-
-        const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}:append?valueInputOption=USER_ENTERED`;
-        const config = {
-            headers: {
-                Authorization: `Bearer ${process.env.REACT_APP_GOOGLE_SERVICE_ACCOUNT_KEY}`,
-            },
-        };
-
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbz4D0Apkx6nCgR0KvXYEFY0qxUO1iRTIULTk_EK0qUkXNATSjff36k6osPcx2js8rcF/exec';
         try {
-            await axios.post(url, { values }, config);
+            await axios.post(scriptURL, {
+                name: name,
+                email: email,
+                phone: phone
+            });
         } catch (error) {
             console.error('Error appending to Google Sheets:', error);
         }
