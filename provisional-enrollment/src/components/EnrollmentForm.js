@@ -6,7 +6,7 @@ const EnrollmentForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [soldCount, setSoldCount] = useState(10); // Replace this with actual logic
+    const [soldCount, setSoldCount] = useState(10); // Replace with your logic
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -46,6 +46,7 @@ const EnrollmentForm = () => {
     const handlePayNow = async () => {
         await submitToGoogleSheet(name, email, phone);
         setSoldCount(soldCount + 1);
+        // Ensure the Razorpay button works
         document.getElementById('razorpay-form').submit();
     };
 
@@ -89,10 +90,10 @@ const EnrollmentForm = () => {
                 </div>
                 <div className="payment-button">
                     <form id="razorpay-form">
-                        <script
+                        <script 
                             src="https://checkout.razorpay.com/v1/payment-button.js"
-                            data-payment_button_id="pl_Oly4SGpv6WDzJr"
-                            async>
+                            data-payment_button_id="pl_Oly4SGpv6WDzJr" 
+                            async> 
                         </script>
                     </form>
                 </div>
