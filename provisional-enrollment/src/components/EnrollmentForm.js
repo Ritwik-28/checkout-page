@@ -22,6 +22,13 @@ const EnrollmentForm = () => {
         } else {
             window.location.href = 'https://form.typeform.com/to/Ko438oSw';
         }
+
+        // Dynamically load Razorpay script after component mounts
+        const script = document.createElement('script');
+        script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+        script.setAttribute('data-payment_button_id', 'pl_Oly4SGpv6WDzJr');
+        script.async = true;
+        document.getElementById('razorpay-form').appendChild(script);
     }, []);
 
     const submitToGoogleSheet = async (name, email, phone) => {
@@ -88,11 +95,7 @@ const EnrollmentForm = () => {
                 </div>
                 <div className="payment-button">
                     <form id="razorpay-form" onClick={handlePayNow}>
-                        <script 
-                            src="https://checkout.razorpay.com/v1/payment-button.js"
-                            data-payment_button_id="pl_Oly4SGpv6WDzJr" 
-                            async> 
-                        </script>
+                        {/* Razorpay script is dynamically loaded here */}
                     </form>
                 </div>
             </div>

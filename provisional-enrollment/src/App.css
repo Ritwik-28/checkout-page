@@ -64,9 +64,11 @@ body {
 .payment-button {
   text-align: center;
   margin-top: 20px;
+  width: 100%;
 }
 
 .payment-button form {
   display: inline-block;
   width: 100%;
+  text-align: center;
 }
