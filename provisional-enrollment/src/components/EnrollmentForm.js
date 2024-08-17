@@ -111,7 +111,6 @@ const EnrollmentForm = () => {
                             async>
                         </script>
                     </form>
-                    <button className="razorpay-button" onClick={handlePayNow}>Pay Now</button>
                 </div>
             </div>
         </div>
