@@ -4,20 +4,14 @@ body {
   color: #ffffff;
   margin: 0;
   padding: 0;
-  height: 100vh; /* Set height to full viewport */
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .container {
   display: flex;
   justify-content: space-between;
   padding: 20px;
-  width: 90%; /* Adjust the width to take more screen space */
-  max-width: 1400px;
+  max-width: 1000px;
   margin: 0 auto;
-  box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .enrollment-details,
@@ -26,7 +20,8 @@ body {
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 48%; /* Adjust width to fit the full container */
+  width: 45%;
+  margin-left: 20px; /* Increased space between the containers */
 }
 
 .enrollment-details h1 {
@@ -36,7 +31,7 @@ body {
 }
 
 .logo {
-  width: 80px; /* Increased logo size */
+  width: 60px; /* Slightly larger logo */
   margin-bottom: 20px;
 }
 
@@ -56,16 +51,28 @@ body {
   width: 20%;
 }
 
-.supporters {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
 .contact-info,
 .terms {
   font-size: 14px;
   margin-top: 20px;
+}
+
+.terms {
+  margin-top: 40px;
+}
+
+.contact-info p {
+  margin: 5px 0;
+}
+
+.contact-info p:nth-child(2) {
+  color: #ffde03;
+}
+
+.payment-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centering the content */
 }
 
 .payment-details h2 {
@@ -76,6 +83,8 @@ body {
 
 .form-group {
   margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
 }
 
 .form-group label {
@@ -85,7 +94,7 @@ body {
 }
 
 .form-group input {
-  width: 100%;
+  width: 80%; /* Reduced width of the input boxes */
   padding: 10px;
   font-size: 14px;
   border: 1px solid #324a52;

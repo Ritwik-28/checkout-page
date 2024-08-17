@@ -89,6 +89,7 @@ const EnrollmentForm = () => {
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Enter your email address"
                     />
                 </div>
                 <div className="form-group">
@@ -97,6 +98,7 @@ const EnrollmentForm = () => {
                         type="tel"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
+                        placeholder="Enter your 10 digit phone number"
                     />
                 </div>
                 <div className="payment-button">
