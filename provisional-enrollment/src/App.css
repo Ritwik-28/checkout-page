@@ -14,7 +14,8 @@ body {
   margin: 0 auto;
 }
 
-.enrollment-details, .payment-details {
+.enrollment-details,
+.payment-details {
   background-color: #142d36;
   border-radius: 8px;
   padding: 20px;
@@ -22,9 +23,10 @@ body {
   width: 45%;
 }
 
-.logo {
-  width: 100px;
+.enrollment-details h1 {
+  font-size: 24px;
   margin-bottom: 20px;
+  color: #00ff84;
 }
 
 .progress-bar {
@@ -32,6 +34,7 @@ body {
   border-radius: 20px;
   height: 10px;
   width: 100%;
+  position: relative;
   margin-bottom: 10px;
 }
 
@@ -39,6 +42,36 @@ body {
   background-color: #3f51b5;
   height: 100%;
   border-radius: 20px;
+}
+
+.supporters {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.contact-info,
+.terms {
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.terms {
+  margin-top: 40px;
+}
+
+.contact-info p {
+  margin: 5px 0;
+}
+
+.contact-info p:nth-child(2) {
+  color: #ffde03;
+}
+
+.payment-details h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #00ff84;
 }
 
 .form-group {
@@ -68,5 +101,6 @@ body {
 
 .payment-button form {
   display: inline-block;
-  width: 100%;
+  width: auto;
+  text-align: center;
 }
