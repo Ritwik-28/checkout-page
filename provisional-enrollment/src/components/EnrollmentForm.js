@@ -29,36 +29,29 @@ const EnrollmentForm = () => {
         document.getElementById('razorpay-form').appendChild(script);
     }, []);
 
-    const submitToGoogleSheet = async (name, email, phone, emailFromInput, phoneFromInput) => {
-        const timestamp = new Date().toLocaleString();
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzzlseVJdhxNIgaOprLpk6kE8a-HVcvwsFD0J6tT8ZKg53ub1hQsE91_6hHzQ-fDQfu/exec';
-
-        const data = {
-            timestamp,
-            name,
-            email,
-            phone,
-            emailFromInput,
-            phoneFromInput
-        };
-
+    const submitToGoogleSheet = async (name, email, phone, type = 'hello') => {
+        const url = 'https://script.google.com/macros/s/AKfycbzU0h-iac3KO_k4gKVPID1lAWdkcvsivjex3VFxWYGYxlXiDI-6QeoG6rfeRHYVEH6c/exec';
+    
         try {
-            await fetch(scriptURL, {
+            const response = await fetch(url, {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(data),
+                body: JSON.stringify({ name, email, phone, type })
             });
+            const result = await response.json();
+            console.log('Success:', result);
         } catch (error) {
             console.error('Error appending to Google Sheets:', error);
         }
     };
-
-    const handlePaymentSuccess = () => {
-        submitToGoogleSheet(null, null, null, email, phone);
-    };
+    
+    // Call this function when the user clicks "Pay Now"
+    const handlePayNowClick = () => {
+        submitToGoogleSheet(null, email, phone, 'payment');
+    };    
 
     return (
         <div className="container">
