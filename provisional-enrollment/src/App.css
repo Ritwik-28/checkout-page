@@ -8,10 +8,12 @@ body {
 
 .container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
+  height: 100vh;
 }
 
 .enrollment-details {

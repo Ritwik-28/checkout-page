@@ -8,7 +8,7 @@ const EnrollmentForm = () => {
     const [phone, setPhone] = useState('');
     const [emailError, setEmailError] = useState(false);
     const [phoneError, setPhoneError] = useState(false);
-    const [progress, setProgress] = useState(20);
+    const [soldCount, setSoldCount] = useState(10); // Replace this with the actual count logic
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -27,7 +27,7 @@ const EnrollmentForm = () => {
     }, []);
 
     const submitToGoogleSheet = async (name, email, phone) => {
-        const sheetId = 'your-sheet-id';
+        const sheetId = '1dVdryyzNxhtwS3QY0amFf65XT6VJCVY1gp1nlgmXmVo';
         const range = 'Hello!A:D';
         const values = [[new Date().toLocaleString(), name, email, phone]];
 
@@ -70,7 +70,7 @@ const EnrollmentForm = () => {
 
         if (validateEmail(email) && validatePhone(phone)) {
             await submitToGoogleSheet(name, email, phone);
-            setProgress((prevProgress) => Math.min(prevProgress + 2, 100));
+            setSoldCount(soldCount + 1);
             document.getElementById('razorpay-form').submit();
         }
     };
@@ -79,9 +79,9 @@ const EnrollmentForm = () => {
         <div className="container">
             <div className="enrollment-details">
                 <h1>Provisional Enrollment</h1>
-                <p>{progress}% completed</p>
+                <p>{soldCount} out of 50</p>
                 <div className="progress-bar">
-                    <div className="progress" style={{ width: `${progress}%` }}></div>
+                    <div className="progress" style={{ width: `${(soldCount / 50) * 100}%` }}></div>
                 </div>
                 <div className="form-group">
                     <label>Email</label>
