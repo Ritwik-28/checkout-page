@@ -8,6 +8,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px), 
+                    linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
 }
 
 .container {
@@ -106,7 +109,7 @@ body {
 
 .form-group input {
   width: 100%;
-  max-width: 300px;
+  max-width: 300px; /* Reduce the input box length */
   padding: 10px;
   font-size: 14px;
   border: 1px solid #324a52;
@@ -118,28 +121,4 @@ body {
 .payment-button {
   text-align: center;
   margin-top: 20px;
-  display: flex;
-  justify-content: center;
-}
-
-.razorpay-button {
-  background-color: #ffde03;
-  color: #142d36;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.payment-details .form-group {
-  display: flex;
-  justify-content: center;
-}
-
-.payment-details {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
