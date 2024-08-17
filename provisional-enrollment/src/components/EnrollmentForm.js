@@ -67,7 +67,7 @@ const EnrollmentForm = () => {
                 </div>
                 <div className="terms">
                     <p><strong>Terms & Conditions:</strong></p>
-                    <p>The provisional enrollment fees of ₹1,000/- is to block your scholarship for a period of 24 hours...</p>
+                    <p>The provisional enrollment fees of ₹1,000/- is to block your scholarship for a period of 24 Hours and shall not be returned in case the learner decides to not move forward with the program.<br><br>You agree to share information entered on this page with Qift Solutech Private Limited (owner of this page) and Razorpay, adhering to applicable laws.</p>
                 </div>
             </div>
             <div className="payment-details">
