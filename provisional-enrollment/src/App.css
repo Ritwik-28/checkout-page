@@ -29,6 +29,11 @@ body {
   color: #00ff84;
 }
 
+.logo {
+  width: 50px; /* Ensure logo isn't too large */
+  margin-bottom: 20px;
+}
+
 .progress-bar {
   background-color: #324a52;
   border-radius: 20px;
@@ -49,6 +54,10 @@ body {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+}
+
+.supporters img {
+  margin-right: 10px;
 }
 
 .contact-info,

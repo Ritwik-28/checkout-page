@@ -6,7 +6,7 @@ const EnrollmentForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [soldCount, setSoldCount] = useState(10); // Replace with your logic
+    const [soldCount, setSoldCount] = useState(10); // Initial count
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -19,6 +19,8 @@ const EnrollmentForm = () => {
             setEmail(email);
             setPhone(phone);
             submitToGoogleSheet(name, email, phone);
+        } else {
+            window.location.href = 'https://form.typeform.com/to/Ko438oSw';
         }
     }, []);
 
@@ -41,13 +43,6 @@ const EnrollmentForm = () => {
         }
     };
 
-    const handlePayNow = async () => {
-        await submitToGoogleSheet(name, email, phone);
-        setSoldCount(soldCount + 1);
-        // Ensure the Razorpay button works
-        document.getElementById('razorpay-form').submit();
-    };
-
     return (
         <div className="container">
             <div className="enrollment-details">
@@ -65,7 +60,8 @@ const EnrollmentForm = () => {
                 </div>
                 <div className="terms">
                     <p><strong>Terms & Conditions:</strong></p>
-                    <p>The provisional enrollment fees of ₹1,000/- is to block your scholarship for a period of 24 Hours and shall not be returned in case the learner decides to not move forward with the program.<br /><br />You agree to share information entered on this page with Qift Solutech Private Limited (owner of this page) and Razorpay, adhering to applicable laws.</p>
+                    <p>The provisional enrollment fees of ₹1,000/- is to block your scholarship for a period of 24 Hours and shall not be returned in case the learner decides to not move forward with the program.</p>
+                    <p>You agree to share information entered on this page with Qift Solutech Private Limited (owner of this page) and Razorpay, adhering to applicable laws.</p>
                 </div>
             </div>
             <div className="payment-details">
@@ -76,7 +72,6 @@ const EnrollmentForm = () => {
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        style={{ width: '300px' }} // Adjusted input width
                     />
                 </div>
                 <div className="form-group">
@@ -85,15 +80,14 @@ const EnrollmentForm = () => {
                         type="tel"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
-                        style={{ width: '300px' }} // Adjusted input width
                     />
                 </div>
                 <div className="payment-button">
                     <form id="razorpay-form">
-                        <script
+                        <script 
                             src="https://checkout.razorpay.com/v1/payment-button.js"
-                            data-payment_button_id="pl_Oly4SGpv6WDzJr"
-                            async>
+                            data-payment_button_id="pl_Oly4SGpv6WDzJr" 
+                            async> 
                         </script>
                     </form>
                 </div>
