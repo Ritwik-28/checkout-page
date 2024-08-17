@@ -32,21 +32,24 @@ const EnrollmentForm = () => {
     }, []);
 
     const submitToGoogleSheet = async (sheet, email, phone, name = null) => {
-        const corsProxy = 'https://cors-anywhere.herokuapp.com/';
-        const url = `${corsProxy}https://script.google.com/macros/s/AKfycbzMe-aToK35uxOYz-Z2lg_lG5jBCqo3YxoqrB-_ncm4u30icM9QBv-nUAhRqVwjyP_j/exec`; // Replace YOUR_SCRIPT_ID with actual script ID
-
-        const params = {
+        const url = `https://script.google.com/macros/s/AKfycbxMl4AVl9PWeZsSn6BRttltyurrbG26f_2foTR4DY9enNARdpFgmF6s6N1c3UPk420v/exec`;
+    
+        const params = new URLSearchParams({
             sheet,
             email,
             phone
-        };
-
+        });
+    
         if (name) {
-            params.name = name;
+            params.append('name', name);
         }
-
+    
         try {
-            const response = await axios.post(url, null, { params });
+            const response = await axios.post(url, params, {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            });
             console.log('Success:', response.data);
         } catch (error) {
             console.error('Error appending to Google Sheets:', error);
