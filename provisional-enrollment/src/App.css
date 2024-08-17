@@ -8,20 +8,23 @@ body {
 
 .container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
-  height: 100vh;
 }
 
-.enrollment-details {
+.enrollment-details, .payment-details {
   background-color: #142d36;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
+  width: 45%;
+}
+
+.logo {
+  width: 100px;
+  margin-bottom: 20px;
 }
 
 .progress-bar {

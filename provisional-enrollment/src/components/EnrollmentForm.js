@@ -6,9 +6,7 @@ const EnrollmentForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [emailError, setEmailError] = useState(false);
-    const [phoneError, setPhoneError] = useState(false);
-    const [soldCount, setSoldCount] = useState(10); // Replace this with the actual count logic
+    const [soldCount, setSoldCount] = useState(10); // Replace this with actual logic
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -45,53 +43,41 @@ const EnrollmentForm = () => {
         }
     };
 
-    const validateEmail = (email) => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    };
-
-    const validatePhone = (phone) => {
-        const phoneRegex = /^\d{10}$/;
-        return phoneRegex.test(phone);
-    };
-
     const handlePayNow = async () => {
-        if (!validateEmail(email)) {
-            setEmailError(true);
-        } else {
-            setEmailError(false);
-        }
-
-        if (!validatePhone(phone)) {
-            setPhoneError(true);
-        } else {
-            setPhoneError(false);
-        }
-
-        if (validateEmail(email) && validatePhone(phone)) {
-            await submitToGoogleSheet(name, email, phone);
-            setSoldCount(soldCount + 1);
-            document.getElementById('razorpay-form').submit();
-        }
+        await submitToGoogleSheet(name, email, phone);
+        setSoldCount(soldCount + 1);
+        document.getElementById('razorpay-form').submit();
     };
 
     return (
         <div className="container">
             <div className="enrollment-details">
+                <img src="https://directus.crio.do/assets/b647b599-ae7a-41a4-98d2-d428a64cc768.webp" alt="Crio Logo" className="logo" />
                 <h1>Provisional Enrollment</h1>
-                <p>{soldCount} out of 50</p>
+                <p>{soldCount} sold out of 50</p>
                 <div className="progress-bar">
                     <div className="progress" style={{ width: `${(soldCount / 50) * 100}%` }}></div>
                 </div>
+                <p>{soldCount} supporters</p>
+                <div className="contact-info">
+                    <p><strong>Contact Us:</strong></p>
+                    <p>📧 ping@criodo.com</p>
+                    <p>📞 06366528148</p>
+                </div>
+                <div className="terms">
+                    <p><strong>Terms & Conditions:</strong></p>
+                    <p>The provisional enrollment fees of ₹1,000/- is to block your scholarship for a period of 24 hours...</p>
+                </div>
+            </div>
+            <div className="payment-details">
+                <h2>Payment Details</h2>
                 <div className="form-group">
                     <label>Email</label>
                     <input
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        style={{ borderColor: emailError ? 'red' : '#324a52' }}
                     />
-                    {emailError && <small>Please enter a valid email</small>}
                 </div>
                 <div className="form-group">
                     <label>Phone</label>
@@ -99,9 +85,7 @@ const EnrollmentForm = () => {
                         type="tel"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
-                        style={{ borderColor: phoneError ? 'red' : '#324a52' }}
                     />
-                    {phoneError && <small>Please enter a valid phone number</small>}
                 </div>
                 <div className="payment-button">
                     <form id="razorpay-form">
