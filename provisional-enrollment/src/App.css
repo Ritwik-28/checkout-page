@@ -51,10 +51,6 @@ body {
   margin-bottom: 20px;
 }
 
-.supporters img {
-  margin-right: 10px;
-}
-
 .contact-info,
 .terms {
   font-size: 14px;
@@ -102,4 +98,14 @@ body {
 .payment-button {
   text-align: center;
   margin-top: 20px;
+}
+
+.razorpay-button {
+  background-color: #ffde03;
+  color: #142d36;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }

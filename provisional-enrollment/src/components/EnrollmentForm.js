@@ -1,33 +1,63 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../App.css';
 
 const EnrollmentForm = () => {
-    const [soldCount, setSoldCount] = useState(10);
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [soldCount, setSoldCount] = useState(10); // Replace with your logic
 
     useEffect(() => {
-        // Dynamically add the Razorpay script
-        const script = document.createElement('script');
-        script.src = "https://checkout.razorpay.com/v1/payment-button.js";
-        script.setAttribute("data-payment_button_id", "pl_Oly4SGpv6WDzJr");
-        script.async = true;
-        document.getElementById("razorpay-form").appendChild(script);
-
-        // Auto-populate email and phone fields from query parameters
         const urlParams = new URLSearchParams(window.location.search);
-        document.getElementById('email').value = urlParams.get('email') || '';
-        document.getElementById('phone').value = urlParams.get('phone') || '';
+        const name = urlParams.get('name');
+        const email = urlParams.get('email');
+        const phone = urlParams.get('phone');
+
+        if (email && phone) {
+            setName(name);
+            setEmail(email);
+            setPhone(phone);
+            submitToGoogleSheet(name, email, phone);
+        }
     }, []);
+
+    const submitToGoogleSheet = async (name, email, phone) => {
+        const sheetId = '1dVdryyzNxhtwS3QY0amFf65XT6VJCVY1gp1nlgmXmVo';
+        const range = 'Hello!A:D';
+        const values = [[new Date().toLocaleString(), name, email, phone]];
+
+        const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}:append?valueInputOption=USER_ENTERED`;
+        const config = {
+            headers: {
+                Authorization: `Bearer ${process.env.REACT_APP_GOOGLE_SERVICE_ACCOUNT_KEY}`,
+            },
+        };
+
+        try {
+            await axios.post(url, { values }, config);
+        } catch (error) {
+            console.error('Error appending to Google Sheets:', error);
+        }
+    };
+
+    const handlePayNow = async () => {
+        await submitToGoogleSheet(name, email, phone);
+        setSoldCount(soldCount + 1);
+        // Ensure the Razorpay button works
+        document.getElementById('razorpay-form').submit();
+    };
 
     return (
         <div className="container">
             <div className="enrollment-details">
-                <img src="https://directus.crio.do/assets/b647b599-ae7a-41a4-98d2-d428a64cc768.webp" alt="Crio.Do" width="100px" />
+                <img src="https://directus.crio.do/assets/b647b599-ae7a-41a4-98d2-d428a64cc768.webp" alt="Crio Logo" className="logo" />
                 <h1>Provisional Enrollment</h1>
-                <p><strong>{soldCount}</strong> sold out of <strong>50</strong></p>
+                <p>{soldCount} sold out of 50</p>
                 <div className="progress-bar">
                     <div className="progress" style={{ width: `${(soldCount / 50) * 100}%` }}></div>
                 </div>
-                <p><strong>{soldCount}</strong> supporters</p>
+                <p>{soldCount} supporters</p>
                 <div className="contact-info">
                     <p><strong>Contact Us:</strong></p>
                     <p>📧 ping@criodo.com</p>
@@ -35,22 +65,37 @@ const EnrollmentForm = () => {
                 </div>
                 <div className="terms">
                     <p><strong>Terms & Conditions:</strong></p>
-                    <p>The provisional enrollment fees of ₹1,000/- is to block your scholarship for a period of 24 Hours and shall not be returned in case the learner decides to not move forward with the program.</p>
-                    <p>You agree to share information entered on this page with Qift Solutech Private Limited (owner of this page) and Razorpay, adhering to applicable laws.</p>
+                    <p>The provisional enrollment fees of ₹1,000/- is to block your scholarship for a period of 24 Hours and shall not be returned in case the learner decides to not move forward with the program.<br /><br />You agree to share information entered on this page with Qift Solutech Private Limited (owner of this page) and Razorpay, adhering to applicable laws.</p>
                 </div>
             </div>
             <div className="payment-details">
                 <h2>Payment Details</h2>
                 <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <input type="email" id="email" placeholder="Enter your email" required />
+                    <label>Email</label>
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        style={{ width: '300px' }} // Adjusted input width
+                    />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="phone">Phone</label>
-                    <input type="tel" id="phone" placeholder="Enter your phone number" required />
+                    <label>Phone</label>
+                    <input
+                        type="tel"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        style={{ width: '300px' }} // Adjusted input width
+                    />
                 </div>
-                <div className="payment-button" id="razorpay-form">
-                    {/* Razorpay button will be appended here */}
+                <div className="payment-button">
+                    <form id="razorpay-form">
+                        <script
+                            src="https://checkout.razorpay.com/v1/payment-button.js"
+                            data-payment_button_id="pl_Oly4SGpv6WDzJr"
+                            async>
+                        </script>
+                    </form>
                 </div>
             </div>
         </div>
