@@ -5,7 +5,7 @@ const EnrollmentForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [soldCount, setSoldCount] = useState(10); // Initial count
+    const [soldCount, setSoldCount] = useState(10);
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -22,7 +22,6 @@ const EnrollmentForm = () => {
             window.location.href = 'https://form.typeform.com/to/Ko438oSw';
         }
 
-        // Load Razorpay script dynamically
         const script = document.createElement('script');
         script.src = "https://checkout.razorpay.com/v1/payment-button.js";
         script.setAttribute('data-payment_button_id', 'pl_Oly4SGpv6WDzJr');
@@ -32,8 +31,8 @@ const EnrollmentForm = () => {
 
     const submitToGoogleSheet = async (name, email, phone, emailFromInput, phoneFromInput) => {
         const timestamp = new Date().toLocaleString();
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbynGyDd-gJQ89aB4MWwufnt2KHh8N_p0gKqtFyQsCEkj8fjwUg8vw_1o2xvryJGxvTQ/exec';
-        
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzzlseVJdhxNIgaOprLpk6kE8a-HVcvwsFD0J6tT8ZKg53ub1hQsE91_6hHzQ-fDQfu/exec';
+
         const data = {
             timestamp,
             name,
@@ -58,7 +57,7 @@ const EnrollmentForm = () => {
     };
 
     const handlePaymentSuccess = () => {
-        submitToGoogleSheet(null, null, null, email, phone); // Push data to YOLO sheet on payment success
+        submitToGoogleSheet(null, null, null, email, phone);
     };
 
     return (
