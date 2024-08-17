@@ -6,19 +6,19 @@ const EnrollmentForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [soldCount, setSoldCount] = useState(10); // Replace with your logic
+    const [soldCount, setSoldCount] = useState(10);
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
-        const name = urlParams.get('name');
-        const email = urlParams.get('email');
-        const phone = urlParams.get('phone');
+        const nameParam = urlParams.get('name');
+        const emailParam = urlParams.get('email');
+        const phoneParam = urlParams.get('phone');
 
-        if (email && phone) {
-            setName(name);
-            setEmail(email);
-            setPhone(phone);
-            submitToGoogleSheet(name, email, phone);
+        if (emailParam && phoneParam) {
+            setName(nameParam);
+            setEmail(emailParam);
+            setPhone(phoneParam);
+            submitToGoogleSheet(nameParam, emailParam, phoneParam);
         } else {
             window.location.href = 'https://form.typeform.com/to/Ko438oSw';
         }
@@ -43,11 +43,8 @@ const EnrollmentForm = () => {
         }
     };
 
-    const handlePayNow = async () => {
-        await submitToGoogleSheet(name, email, phone);
+    const handlePayNow = () => {
         setSoldCount(soldCount + 1);
-        // Ensure the Razorpay button works
-        document.getElementById('razorpay-form').submit();
     };
 
     return (
@@ -67,7 +64,8 @@ const EnrollmentForm = () => {
                 </div>
                 <div className="terms">
                     <p><strong>Terms & Conditions:</strong></p>
-                    <p>The provisional enrollment fees of ₹1,000/- is to block your scholarship for a period of 24 Hours and shall not be returned in case the learner decides to not move forward with the program.<br><br>You agree to share information entered on this page with Qift Solutech Private Limited (owner of this page) and Razorpay, adhering to applicable laws.</p>
+                    <p>The provisional enrollment fees of ₹1,000/- is to block your scholarship for a period of 24 Hours and shall not be returned in case the learner decides to not move forward with the program.</p>
+                    <p>You agree to share information entered on this page with Qift Solutech Private Limited (owner of this page) and Razorpay, adhering to applicable laws.</p>
                 </div>
             </div>
             <div className="payment-details">
