@@ -32,7 +32,8 @@ const EnrollmentForm = () => {
     }, []);
 
     const submitToGoogleSheet = async (sheet, email, phone, name = null) => {
-        const url = `https://script.google.com/macros/s/AKfycbxRbiaSayvUayKyex1ljBXM_wMBbCrauDwE2B3WriLsP2I8o-pE5TmGiURQTcfiaQRj/exec`; // Replace YOUR_SCRIPT_ID with actual script ID
+        const corsProxy = 'https://cors-anywhere.herokuapp.com/';
+        const url = `${corsProxy}https://script.google.com/macros/s/AKfycbzMe-aToK35uxOYz-Z2lg_lG5jBCqo3YxoqrB-_ncm4u30icM9QBv-nUAhRqVwjyP_j/exec`; // Replace YOUR_SCRIPT_ID with actual script ID
 
         const params = {
             sheet,
