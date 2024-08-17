@@ -87,10 +87,10 @@ const EnrollmentForm = () => {
                     />
                 </div>
                 <div className="payment-button">
-                    <form id="razorpay-form" onClick={handlePayNow}>
+                    <form id="razorpay-form">
                         <script 
                             src="https://checkout.razorpay.com/v1/payment-button.js"
-                            data-payment_button_id="pl_Oly4SGpv6WDzJr" 
+                            data-payment_button_id="pl_Oly4SGpv6WDzJr"
                             async> 
                         </script>
                     </form>

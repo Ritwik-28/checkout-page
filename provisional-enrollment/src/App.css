@@ -69,6 +69,6 @@ body {
 
 .payment-button form {
   display: inline-block;
-  width: 100%;
+  width: auto;
   text-align: center;
 }
