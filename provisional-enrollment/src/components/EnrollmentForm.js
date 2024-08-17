@@ -18,6 +18,7 @@ const EnrollmentForm = () => {
             setName(name);
             setEmail(email);
             setPhone(phone);
+            submitToGoogleSheet("Hello", email, phone, name); // Submit to Hello sheet on page load
         } else {
             window.location.href = 'https://form.typeform.com/to/Ko438oSw';
         }
@@ -30,22 +31,29 @@ const EnrollmentForm = () => {
         document.getElementById('razorpay-form').appendChild(script);
     }, []);
 
-    const handlePayNowClick = async () => {
-        const url = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+    const submitToGoogleSheet = async (sheet, email, phone, name = null) => {
+        const url = `https://script.google.com/macros/s/AKfycbxRbiaSayvUayKyex1ljBXM_wMBbCrauDwE2B3WriLsP2I8o-pE5TmGiURQTcfiaQRj/exec`; // Replace YOUR_SCRIPT_ID with actual script ID
+
+        const params = {
+            sheet,
+            email,
+            phone
+        };
+
+        if (name) {
+            params.name = name;
+        }
+
         try {
-            const response = await fetch(url, {
-                method: 'POST',
-                mode: 'cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ name, email, phone, type: 'payment' })
-            });
-            const result = await response.json();
-            console.log('Success:', result);
+            const response = await axios.post(url, null, { params });
+            console.log('Success:', response.data);
         } catch (error) {
             console.error('Error appending to Google Sheets:', error);
         }
+    };
+
+    const handlePayNowClick = () => {
+        submitToGoogleSheet("YOLO", email, phone); // Submit to YOLO sheet on Pay Now click
     };
 
     return (
