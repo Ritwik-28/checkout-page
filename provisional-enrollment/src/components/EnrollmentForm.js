@@ -50,7 +50,7 @@ const EnrollmentForm = () => {
     }, []);
 
     const submitToGoogleSheet = async (sheet, email, phone, name = null) => {
-        const url = "https://script.google.com/macros/s/AKfycbzDQmh0Qcjfn_mnc5ThwPT1sUifUFFQyeMSMoLPMgpgkhzN6PKL42_IfdWCmaQ_RPBG/exec";
+        const url = "https://script.google.com/macros/s/AKfycbxiq6Ir5doNa7fNKeIIgKNqCYEE9geb7stzu3caX_1KUNtFSvkiyNQkloWgZhsx8K0x/exec";
     
         const params = new URLSearchParams({
             sheet,
