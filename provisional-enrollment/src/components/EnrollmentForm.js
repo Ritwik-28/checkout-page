@@ -8,7 +8,7 @@ const EnrollmentForm = () => {
     const [phone, setPhone] = useState('');
     const [soldCount, setSoldCount] = useState(10); // Default count of 10
 
-    const scriptURL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbzSIRkFCWoWfDP6ff3jofIyKNruFzRv0nhInLgBFSunsjemCbBzUcfNdPAF_VFQzg8c/exec";
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
