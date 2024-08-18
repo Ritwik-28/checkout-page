@@ -6,9 +6,27 @@ const EnrollmentForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [soldCount, setSoldCount] = useState(10); // Initial count
+    const [soldCount, setSoldCount] = useState(10); // Default value
 
     useEffect(() => {
+        const fetchSoldCount = async () => {
+            try {
+                const response = await axios.get('https://script.google.com/macros/s/AKfycbzuCVv2xa3TGY1xZz3x69XJAs3-EaxAZnqcRK3V9igSBIRvwd4S26TwbVUwzHLYBpL4/exec', {
+                    params: {
+                        sheet: 'YOLO',
+                        action: 'getSoldCount',
+                    },
+                });
+                let count = response.data.soldCount;
+                count = count > 50 ? 48 : count; // Cap the count at 48 if it exceeds 50
+                setSoldCount(count);
+            } catch (error) {
+                console.error('Error fetching sold count:', error);
+            }
+        };
+
+        fetchSoldCount();
+
         const urlParams = new URLSearchParams(window.location.search);
         const name = urlParams.get('name');
         const email = urlParams.get('email');
@@ -51,6 +69,10 @@ const EnrollmentForm = () => {
                 }
             });
             console.log('Success:', response.data);
+            setSoldCount((prevCount) => {
+                const newCount = prevCount + 1;
+                return newCount > 50 ? 48 : newCount;
+            });
         } catch (error) {
             console.error('Error appending to Google Sheets:', error);
         }
