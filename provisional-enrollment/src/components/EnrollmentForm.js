@@ -8,7 +8,7 @@ const EnrollmentForm = () => {
     const [phone, setPhone] = useState('');
     const [soldCount, setSoldCount] = useState(10); // Default count of 10
 
-    const scriptURL = "https://script.google.com/macros/s/AKfycbzSIRkFCWoWfDP6ff3jofIyKNruFzRv0nhInLgBFSunsjemCbBzUcfNdPAF_VFQzg8c/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbxrSJqpnC0ezXTAbzjfvKUAKrPKJ44ZzqMoOReItT8sd6QlJl6Ms6-hdcWmeowiYGGM/exec";
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -39,10 +39,7 @@ const EnrollmentForm = () => {
     const fetchSoldCount = async () => {
         try {
             const response = await axios.get(scriptURL, {
-                params: { action: "getSoldCount" },
-                headers: {
-                    'Referer': 'https://crio-do-provisional-enrollment.vercel.app/', // Include the referer header
-                },
+                params: { action: "getSoldCount" }
             });
             const data = response.data;
             if (data.soldCount) {
@@ -68,8 +65,7 @@ const EnrollmentForm = () => {
         try {
             const response = await axios.post(scriptURL, params, {
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'Referer': 'https://crio-do-provisional-enrollment.vercel.app/', // Include the referer header
+                    'Content-Type': 'application/x-www-form-urlencoded'
                 },
             });
             console.log('Success:', response.data);
