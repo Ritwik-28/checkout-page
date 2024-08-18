@@ -108,13 +108,15 @@ body {
 }
 
 .progress-bar-container h3,
-.progress-bar p {
+.progress-bar-container p {
   color: #00ff84;
   margin: 0;
+  padding: 0 10px; /* Add horizontal padding */
 }
 
 .progress-bar-container p {
-  margin-top: 5px;
+  margin-top: 10px; /* Increase top margin for better spacing */
+  margin-bottom: 10px; /* Add bottom margin */
 }
 
 @media (max-width: 768px) {
