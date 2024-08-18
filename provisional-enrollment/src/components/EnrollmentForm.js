@@ -6,7 +6,7 @@ const EnrollmentForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [soldCount, setSoldCount] = useState(10);
+    const [soldCount, setSoldCount] = useState(10); // Initial count
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -18,11 +18,12 @@ const EnrollmentForm = () => {
             setName(name);
             setEmail(email);
             setPhone(phone);
-            submitToGoogleSheet("Hello", email, phone, name);
+            submitToGoogleSheet("Hello", email, phone, name); // Submit to Hello sheet on page load
         } else {
             window.location.href = 'https://form.typeform.com/to/Ko438oSw';
         }
 
+        // Load Razorpay script dynamically
         const script = document.createElement('script');
         script.src = "https://checkout.razorpay.com/v1/payment-button.js";
         script.setAttribute('data-payment_button_id', 'pl_Oly4SGpv6WDzJr');
@@ -55,25 +56,33 @@ const EnrollmentForm = () => {
         }
     };
 
+    const handlePayNowClick = () => {
+        submitToGoogleSheet("YOLO", email, phone); // Submit to YOLO sheet on Pay Now click
+    };
+
     return (
         <div className="container">
+            <div className="top-strip">
+                <div className="logo-heading">
+                    <img src="https://directus.crio.do/assets/b647b599-ae7a-41a4-98d2-d428a64cc768.webp" alt="Crio Logo" className="logo" />
+                    <h2>Provisional Enrollment</h2>
+                </div>
+            </div>
             <div className="enrollment-details">
-                <img src="https://directus.crio.do/assets/b647b599-ae7a-41a4-98d2-d428a64cc768.webp" alt="Crio Logo" className="logo" />
-                <h1>Provisional Enrollment</h1>
-                <p>{soldCount} sold out of 50</p>
+                <h1>Crio.Do Provisional Enrollment</h1>
+                <p>Provisional Enrollment is a temporary enrollment process that allows you to secure a spot in a program or course before completing the full enrollment process. By providing your email and phone number, you are indicating your interest in enrolling and will be contacted with further instructions.</p>
+                <div className="terms">
+                    <h4>Terms and Conditions:</h4>
+                    <p>The provisional enrollment fees of ₹1,000/- is to block your scholarship for a period of 24 Hours and shall not be returned in case the learner decides to not move forward with the program.</p>
+                    <p>You agree to share information entered on this page with Qift Solutech Private Limited (owner of this page) and Razorpay, adhering to applicable laws.</p>
+                </div>
                 <div className="progress-bar">
                     <div className="progress" style={{ width: `${(soldCount / 50) * 100}%` }}></div>
                 </div>
-                <p>{soldCount} supporters</p>
                 <div className="contact-info">
-                    <p><strong>Contact Us:</strong></p>
-                    <p>📧 ping@criodo.com</p>
-                    <p>📞 06366528148</p>
-                </div>
-                <div className="terms">
-                    <p><strong>Terms & Conditions:</strong></p>
-                    <p>The provisional enrollment fees of ₹1,000/- is to block your scholarship for a period of 24 Hours and shall not be returned in case the learner decides to not move forward with the program.</p>
-                    <p>You agree to share information entered on this page with Qift Solutech Private Limited (owner of this page) and Razorpay, adhering to applicable laws.</p>
+                    <h4>Contact Us:</h4>
+                    <p>Email: ping@criodo.com</p>
+                    <p>Phone: 06366528148</p>
                 </div>
             </div>
             <div className="payment-details">
@@ -95,7 +104,7 @@ const EnrollmentForm = () => {
                     />
                 </div>
                 <div className="payment-button">
-                    <form id="razorpay-form" onClick={() => submitToGoogleSheet("YOLO", email, phone)}></form>
+                    <form id="razorpay-form" onClick={handlePayNowClick}></form>
                 </div>
             </div>
         </div>
