@@ -6,7 +6,7 @@ const EnrollmentForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [soldCount, setSoldCount] = useState(10); // Initial count
+    const [soldCount, setSoldCount] = useState(10); // Initialize with 10
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -23,7 +23,21 @@ const EnrollmentForm = () => {
             window.location.href = 'https://form.typeform.com/to/Ko438oSw';
         }
 
-        // Fetch the sold count on page load
+        // Fetch the sold count
+        const fetchSoldCount = async () => {
+            try {
+                const response = await axios.get("https://script.google.com/macros/s/AKfycbyRseS_2Od4_Uow-cIVaVvPRxvq_JeZXNSVA_T6N3o9kLf9t9EGN6gStSDGReLWkrhN/exec", {
+                    params: {
+                        action: "getSoldCount",
+                        sheet: "YOLO"
+                    }
+                });
+                setSoldCount(response.data.soldCount);
+            } catch (error) {
+                console.error("Error fetching sold count:", error);
+            }
+        };
+
         fetchSoldCount();
 
         // Load Razorpay script dynamically
@@ -56,17 +70,6 @@ const EnrollmentForm = () => {
             console.log('Success:', response.data);
         } catch (error) {
             console.error('Error appending to Google Sheets:', error);
-        }
-    };
-
-    const fetchSoldCount = async () => {
-        const url = "https://script.google.com/macros/s/AKfycbyRseS_2Od4_Uow-cIVaVvPRxvq_JeZXNSVA_T6N3o9kLf9t9EGN6gStSDGReLWkrhN/exec";
-        try {
-            const response = await axios.get(`${url}?action=getSoldCount`);
-            const count = response.data.soldCount || 10; // Fallback to 10 if undefined
-            setSoldCount(count);
-        } catch (error) {
-            console.error('Error fetching sold count:', error);
         }
     };
 
