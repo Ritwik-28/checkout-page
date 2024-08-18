@@ -6,9 +6,9 @@ const EnrollmentForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [soldCount, setSoldCount] = useState(10); // Default initial count
+    const [soldCount, setSoldCount] = useState(10); // Default count of 10
 
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbzSIRkFCWoWfDP6ff3jofIyKNruFzRv0nhInLgBFSunsjemCbBzUcfNdPAF_VFQzg8c/exec';
+    const scriptURL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -25,28 +25,32 @@ const EnrollmentForm = () => {
             window.location.href = 'https://form.typeform.com/to/Ko438oSw';
         }
 
-        fetchSoldCount(); // Fetch sold count when component mounts
-
         // Load Razorpay script dynamically
         const script = document.createElement('script');
         script.src = "https://checkout.razorpay.com/v1/payment-button.js";
         script.setAttribute('data-payment_button_id', 'pl_Oly4SGpv6WDzJr');
         script.async = true;
         document.getElementById('razorpay-form').appendChild(script);
+
+        // Fetch the sold count from Google Sheets
+        fetchSoldCount();
     }, []);
 
     const fetchSoldCount = async () => {
         try {
-            const response = await axios.get(`${scriptUrl}?action=getSoldCount`);
-            const count = response.data.soldCount;
-            if (count && !isNaN(count)) {
-                setSoldCount(count);
-            } else {
-                setSoldCount(10); // Fallback to default if no valid data is returned
+            const response = await axios.get(scriptURL, {
+                params: { action: "getSoldCount" },
+                headers: {
+                    'Referer': 'https://crio-do-provisional-enrollment.vercel.app/', // Include the referer header
+                },
+            });
+            const data = response.data;
+            if (data.soldCount) {
+                setSoldCount(data.soldCount);
             }
         } catch (error) {
             console.error('Error fetching sold count:', error);
-            setSoldCount(10); // Fallback to default in case of error
+            setSoldCount(10); // Fallback to 10 if fetch fails
         }
     };
 
@@ -54,18 +58,19 @@ const EnrollmentForm = () => {
         const params = new URLSearchParams({
             sheet,
             email,
-            phone
+            phone,
         });
-    
+
         if (name) {
             params.append('name', name);
         }
-    
+
         try {
-            const response = await axios.post(scriptUrl, params, {
+            const response = await axios.post(scriptURL, params, {
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Referer': 'https://crio-do-provisional-enrollment.vercel.app/', // Include the referer header
+                },
             });
             console.log('Success:', response.data);
         } catch (error) {
@@ -73,10 +78,9 @@ const EnrollmentForm = () => {
         }
     };
 
-    const handlePayNowClick = () => {
-        submitToGoogleSheet("YOLO", email, phone).then(() => {
-            fetchSoldCount(); // Refresh sold count after submitting
-        });
+    const handlePayNowClick = async () => {
+        await submitToGoogleSheet("YOLO", email, phone); // Submit to YOLO sheet on Pay Now click
+        fetchSoldCount(); // Fetch the updated sold count after payment
     };
 
     return (
