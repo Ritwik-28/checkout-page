@@ -88,7 +88,12 @@ const EnrollmentForm = () => {
             <div className="content-container">
                 <div className="enrollment-details">
                     <h2>Crio.Do Provisional Enrollment</h2>
-                    <p>Provisional Enrollment is a temporary enrollment process that allows you to secure a spot in a program or course before completing the full enrollment process. By providing your email and phone number, you are indicating your interest in enrolling and will be contacted with further instructions.</p>
+                    <h3>Secure Your Spot in Crio.Do's Next Batch with Provisional Enrollment!</h3>
+                        <ul>
+                             <li><strong>Lock in Your Seat Today!</strong></li>
+                             <li><strong>Limited Spots Available—Act Fast to Reserve Yours!</strong></li>
+                        </ul>
+                    <p>By choosing Crio.Do's Provisional Enrollment, you guarantee a place in our upcoming batch. Don't miss this chance to jumpstart your tech career with us. Enroll now and access our world-class training program.</p>
                     <h3>Terms and Conditions:</h3>
                     <p>The provisional enrollment fees of ₹1,000/- is to block your scholarship for a period of 24 Hours and shall not be returned in case the learner decides to not move forward with the program.</p>
                     <p>You agree to share information entered on this page with Qift Solutech Private Limited (owner of this page) and Razorpay, adhering to applicable laws.</p>
