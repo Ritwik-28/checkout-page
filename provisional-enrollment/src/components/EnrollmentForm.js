@@ -32,18 +32,18 @@ const EnrollmentForm = () => {
     }, []);
 
     const submitToGoogleSheet = async (sheet, email, phone, name = null) => {
-        const url = `https://script.google.com/macros/s/AKfycbxMl4AVl9PWeZsSn6BRttltyurrbG26f_2foTR4DY9enNARdpFgmF6s6N1c3UPk420v/exec`;
+        const url = 'https://script.google.com/macros/s/AKfycbzuCVv2xa3TGY1xZz3x69XJAs3-EaxAZnqcRK3V9igSBIRvwd4S26TwbVUwzHLYBpL4/exec';
     
         const params = new URLSearchParams({
             sheet,
             email,
             phone
         });
-    
+
         if (name) {
             params.append('name', name);
         }
-    
+
         try {
             const response = await axios.post(url, params, {
                 headers: {
@@ -62,27 +62,23 @@ const EnrollmentForm = () => {
 
     return (
         <div className="container">
-            <div className="top-strip">
-                <div className="logo-heading">
-                    <img src="https://directus.crio.do/assets/b647b599-ae7a-41a4-98d2-d428a64cc768.webp" alt="Crio Logo" className="logo" />
-                    <h2>Provisional Enrollment</h2>
-                </div>
-            </div>
             <div className="enrollment-details">
-                <h1>Crio.Do Provisional Enrollment</h1>
-                <p>Provisional Enrollment is a temporary enrollment process that allows you to secure a spot in a program or course before completing the full enrollment process. By providing your email and phone number, you are indicating your interest in enrolling and will be contacted with further instructions.</p>
-                <div className="terms">
-                    <h4>Terms and Conditions:</h4>
-                    <p>The provisional enrollment fees of ₹1,000/- is to block your scholarship for a period of 24 Hours and shall not be returned in case the learner decides to not move forward with the program.</p>
-                    <p>You agree to share information entered on this page with Qift Solutech Private Limited (owner of this page) and Razorpay, adhering to applicable laws.</p>
-                </div>
+                <img src="https://directus.crio.do/assets/b647b599-ae7a-41a4-98d2-d428a64cc768.webp" alt="Crio Logo" className="logo" />
+                <h1>Provisional Enrollment</h1>
+                <p>{soldCount} sold out of 50</p>
                 <div className="progress-bar">
                     <div className="progress" style={{ width: `${(soldCount / 50) * 100}%` }}></div>
                 </div>
+                <p>{soldCount} supporters</p>
                 <div className="contact-info">
-                    <h4>Contact Us:</h4>
-                    <p>Email: ping@criodo.com</p>
-                    <p>Phone: 06366528148</p>
+                    <p><strong>Contact Us:</strong></p>
+                    <p>📧 ping@criodo.com</p>
+                    <p>📞 06366528148</p>
+                </div>
+                <div className="terms">
+                    <p><strong>Terms & Conditions:</strong></p>
+                    <p>The provisional enrollment fees of ₹1,000/- is to block your scholarship for a period of 24 Hours and shall not be returned in case the learner decides to not move forward with the program.</p>
+                    <p>You agree to share information entered on this page with Qift Solutech Private Limited (owner of this page) and Razorpay, adhering to applicable laws.</p>
                 </div>
             </div>
             <div className="payment-details">

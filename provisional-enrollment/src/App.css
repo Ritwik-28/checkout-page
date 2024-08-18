@@ -4,47 +4,56 @@ body {
   color: #ffffff;
   margin: 0;
   padding: 0;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px), 
-                    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: url('grid-background.png'); /* A subtle grid pattern */
   background-size: 50px 50px;
 }
 
 .container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   padding: 20px;
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
-  flex-direction: column;
+  background-color: #142d36;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.header-strip {
+.header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
-  background-color: #142d36;
-  margin-bottom: 20px;
   width: 100%;
+  background-color: #142d36;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ffffff20;
 }
 
-.header-strip img {
-  height: 40px;
+.header img {
+  height: 60px;
 }
 
-.header-strip h1 {
-  font-size: 24px;
-  margin: 0;
-  color: #00ff84;
+.header h1 {
   flex-grow: 1;
   text-align: center;
+  color: #00ff84;
+  font-size: 24px;
+  margin: 0;
 }
 
-.main-content {
+.content {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 20px;
+  width: 100%;
+  padding: 20px;
 }
 
 .enrollment-details,
@@ -52,53 +61,17 @@ body {
   background-color: #142d36;
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 48%;
 }
 
-.enrollment-details h2, .payment-details h2 {
+h1 {
   font-size: 24px;
   color: #00ff84;
   margin-bottom: 20px;
 }
 
-.logo {
-  width: 100px;
-  margin-bottom: 20px;
-}
-
-.terms, .contact-info {
-  font-size: 14px;
-  margin-top: 20px;
-}
-
-.progress-container {
-  background-color: #102a33;
-  border-radius: 8px;
-  padding: 20px;
-  width: 100%;
-  margin-top: 20px;
-  text-align: center;
-}
-
-.progress-container h2 {
-  color: #00ff84;
-  margin-bottom: 10px;
-}
-
-.progress-bar {
-  background-color: #324a52;
-  border-radius: 20px;
-  height: 10px;
-  width: 100%;
-  position: relative;
-  margin-bottom: 10px;
-}
-
-.progress {
-  background-color: #3f51b5;
-  height: 100%;
-  border-radius: 20px;
+p {
+  margin: 10px 0;
 }
 
 .form-group {
@@ -113,6 +86,7 @@ body {
 
 .form-group input {
   width: 100%;
+  max-width: 300px;
   padding: 10px;
   font-size: 14px;
   border: 1px solid #324a52;
@@ -126,12 +100,28 @@ body {
   margin-top: 20px;
 }
 
-.razorpay-button {
-  background-color: #ffde03;
+.payment-button button {
+  background-color: #00ff84;
   color: #142d36;
   padding: 10px 20px;
   font-size: 16px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.progress-bar {
+  background-color: #324a52;
+  border-radius: 20px;
+  height: 10px;
+  width: 100%;
+  position: relative;
+  margin-top: 20px;
+}
+
+.progress {
+  background-color: #3f51b5;
+  height: 100%;
+  border-radius: 20px;
+  width: 20%;
 }
