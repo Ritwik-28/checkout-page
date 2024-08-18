@@ -4,12 +4,8 @@ body {
   color: #ffffff;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background-image: url('grid-background.png'); /* A subtle grid pattern */
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                    linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
   background-size: 50px 50px;
 }
 
@@ -17,61 +13,65 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   padding: 20px;
   max-width: 1200px;
-  width: 100%;
   margin: 0 auto;
-  background-color: #142d36;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: #142d36;
-  padding: 10px 20px;
-  border-bottom: 1px solid #ffffff20;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
-.header img {
-  height: 60px;
+.header .logo {
+  height: 50px;
 }
 
 .header h1 {
-  flex-grow: 1;
-  text-align: center;
   color: #00ff84;
   font-size: 24px;
-  margin: 0;
 }
 
 .content {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 20px;
 }
 
-.enrollment-details,
-.payment-details {
+.enrollment-details, .payment-details {
   background-color: #142d36;
   border-radius: 8px;
   padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 48%;
 }
 
-h1 {
-  font-size: 24px;
+.enrollment-details h2, .payment-details h2 {
   color: #00ff84;
   margin-bottom: 20px;
 }
 
-p {
-  margin: 10px 0;
+.progress-bar {
+  background-color: #324a52;
+  border-radius: 20px;
+  height: 10px;
+  width: 100%;
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.progress {
+  background-color: #3f51b5;
+  height: 100%;
+  border-radius: 20px;
 }
 
 .form-group {
@@ -85,8 +85,7 @@ p {
 }
 
 .form-group input {
-  width: 100%;
-  max-width: 300px;
+  width: 80%;  /* Reduced width for smaller input boxes */
   padding: 10px;
   font-size: 14px;
   border: 1px solid #324a52;
@@ -100,28 +99,13 @@ p {
   margin-top: 20px;
 }
 
-.payment-button button {
-  background-color: #00ff84;
+.payment-button form {
+  display: inline-block;
+  background-color: #ffde03;
   color: #142d36;
   padding: 10px 20px;
   font-size: 16px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-}
-
-.progress-bar {
-  background-color: #324a52;
-  border-radius: 20px;
-  height: 10px;
-  width: 100%;
-  position: relative;
-  margin-top: 20px;
-}
-
-.progress {
-  background-color: #3f51b5;
-  height: 100%;
-  border-radius: 20px;
-  width: 20%;
 }

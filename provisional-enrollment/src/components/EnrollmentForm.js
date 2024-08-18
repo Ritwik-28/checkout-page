@@ -39,11 +39,11 @@ const EnrollmentForm = () => {
             email,
             phone
         });
-
+    
         if (name) {
             params.append('name', name);
         }
-
+    
         try {
             const response = await axios.post(url, params, {
                 headers: {
@@ -62,45 +62,48 @@ const EnrollmentForm = () => {
 
     return (
         <div className="container">
-            <div className="enrollment-details">
+            <div className="header">
                 <img src="https://directus.crio.do/assets/b647b599-ae7a-41a4-98d2-d428a64cc768.webp" alt="Crio Logo" className="logo" />
                 <h1>Provisional Enrollment</h1>
-                <p>{soldCount} sold out of 50</p>
-                <div className="progress-bar">
-                    <div className="progress" style={{ width: `${(soldCount / 50) * 100}%` }}></div>
-                </div>
-                <p>{soldCount} supporters</p>
-                <div className="contact-info">
-                    <p><strong>Contact Us:</strong></p>
-                    <p>📧 ping@criodo.com</p>
-                    <p>📞 06366528148</p>
-                </div>
-                <div className="terms">
-                    <p><strong>Terms & Conditions:</strong></p>
+            </div>
+            <div className="content">
+                <div className="enrollment-details">
+                    <h2>Crio.Do Provisional Enrollment</h2>
+                    <p>Provisional Enrollment is a temporary enrollment process that allows you to secure a spot in a program or course before completing the full enrollment process. By providing your email and phone number, you are indicating your interest in enrolling and will be contacted with further instructions.</p>
+                    <h3>Terms and Conditions:</h3>
                     <p>The provisional enrollment fees of ₹1,000/- is to block your scholarship for a period of 24 Hours and shall not be returned in case the learner decides to not move forward with the program.</p>
                     <p>You agree to share information entered on this page with Qift Solutech Private Limited (owner of this page) and Razorpay, adhering to applicable laws.</p>
+                    <div className="progress-bar">
+                        <div className="progress" style={{ width: `${(soldCount / 50) * 100}%` }}></div>
+                        <p>{soldCount} sold out of 50</p>
+                    </div>
+                    <div className="contact-info">
+                        <p><strong>Contact Us:</strong></p>
+                        <p>📧 ping@criodo.com</p>
+                        <p>📞 06366528148</p>
+                    </div>
                 </div>
-            </div>
-            <div className="payment-details">
-                <h2>Payment Details</h2>
-                <div className="form-group">
-                    <label>Email</label>
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Phone</label>
-                    <input
-                        type="tel"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                    />
-                </div>
-                <div className="payment-button">
-                    <form id="razorpay-form" onClick={handlePayNowClick}></form>
+                <div className="payment-details">
+                    <h2>Payment Details</h2>
+                    <div className="form-group">
+                        <label>Email</label>
+                        <input
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Phone</label>
+                        <input
+                            type="tel"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                        />
+                    </div>
+                    <div className="payment-button">
+                        <form id="razorpay-form" onClick={handlePayNowClick}></form>
+                    </div>
                 </div>
             </div>
         </div>
