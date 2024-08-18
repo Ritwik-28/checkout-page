@@ -98,8 +98,8 @@ body {
   background-color: #142d36;
   border-radius: 8px;
   width: 100%;
+  height: auto; /* This ensures the container height adjusts dynamically */
   box-sizing: border-box;
-  height: auto; /* Set the height to auto so it adjusts to content */
 }
 
 .progress-bar {
@@ -126,7 +126,7 @@ body {
 
 .progress-bar-container p {
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 0; /* Adjust this to avoid overflow */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
