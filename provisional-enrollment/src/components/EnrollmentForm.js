@@ -107,7 +107,6 @@ const EnrollmentForm = () => {
                 <div className="progress-bar">
                     <div className="progress" style={{ width: `${(soldCount / 50) * 100}%` }}></div>
                     <p>{soldCount} sold out of 50</p>
-                    <p>{soldCount} supporters</p>
                 </div>
             </div>
         </div>

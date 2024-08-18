@@ -1,82 +1,78 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #0e2a33;
-  color: #ffffff;
-  margin: 0;
-  padding: 0;
+  background-color: #0f3d3e;
   background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px), 
                     linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 50px 50px;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.top-strip {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #0a1e29;
-  padding: 20px;
-}
-
-.top-strip .logo {
-  width: 80px;
-}
-
-.top-strip-heading {
-  font-size: 24px;
-  margin: 0;
-  color: #00ff84;
-  text-align: center;
-  flex-grow: 1;
-}
-
-.content-container {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-  gap: 20px;
-}
-
-.enrollment-details,
-.payment-details {
-  background-color: #142d36;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 45%;
+  background-color: #183e3f;
+  margin-bottom: 20px;
 }
 
-.enrollment-details h2,
-.payment-details h2 {
-  font-size: 20px;
-  margin-bottom: 20px;
-  color: #00ff84;
+.header-container {
+  background-color: #102224;
+  padding: 20px 40px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header-container img {
+  width: 120px;
+  float: left;
+}
+
+.header-container h1 {
+  color: #1be87b;
+  font-size: 2.5em;
+  margin: 0;
+  line-height: 120px;
+}
+
+.enrollment-container,
+.payment-container,
+.progress-container {
+  display: inline-block;
+  width: 45%;
+  margin: 10px;
+  vertical-align: top;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.progress-container {
+  width: 100%;
+  text-align: left;
+}
+
+.progress-bar {
+  height: 10px;
+  background-color: #1be87b;
+  border-radius: 5px;
+  margin: 10px 0;
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin: 10px 0;
 }
 
 .form-group label {
   display: block;
   margin-bottom: 5px;
-  font-size: 14px;
 }
 
 .form-group input {
-  width: 100%;
+  width: 80%;
   padding: 10px;
-  font-size: 14px;
-  border: 1px solid #324a52;
+  border: none;
   border-radius: 5px;
-  background-color: #102a33;
-  color: #ffffff;
 }
 
 .payment-button {
@@ -84,34 +80,43 @@ body {
   margin-top: 20px;
 }
 
-.progress-bar-container {
-  margin-top: 20px;
-  padding: 20px;
-  background-color: #142d36;
-  border-radius: 8px;
+.payment-button form {
+  display: inline-block;
 }
 
-.progress-bar {
-  background-color: #324a52;
-  border-radius: 20px;
-  height: 10px;
-  width: 100%;
-  position: relative;
-  margin-top: 10px;
+.payment-button form button {
+  background-color: #00c853;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.progress {
-  background-color: #3f51b5;
-  height: 100%;
-  border-radius: 20px;
+.payment-button form button:hover {
+  background-color: #00b348;
 }
 
-.progress-bar-container h3,
-.progress-bar p {
-  color: #00ff84;
-  margin: 0;
-}
+@media (max-width: 768px) {
+  .enrollment-container,
+  .payment-container,
+  .progress-container {
+      width: 90%;
+      margin: 10px auto;
+  }
 
-.progress-bar-container p {
-  margin-top: 5px;
+  .header-container h1 {
+      font-size: 1.8em;
+      line-height: 1.2;
+  }
+
+  .header-container img {
+      width: 80px;
+      float: none;
+      margin: 0 auto;
+  }
+
+  .payment-button form button {
+      width: 100%;
+  }
 }
