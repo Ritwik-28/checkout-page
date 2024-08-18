@@ -32,7 +32,7 @@ const EnrollmentForm = () => {
     }, []);
 
     const submitToGoogleSheet = async (sheet, email, phone, name = null) => {
-        const url = 'https://script.google.com/macros/s/AKfycbzuCVv2xa3TGY1xZz3x69XJAs3-EaxAZnqcRK3V9igSBIRvwd4S26TwbVUwzHLYBpL4/exec';
+        const url = `https://script.google.com/macros/s/AKfycbzuCVv2xa3TGY1xZz3x69XJAs3-EaxAZnqcRK3V9igSBIRvwd4S26TwbVUwzHLYBpL4/exec`;
     
         const params = new URLSearchParams({
             sheet,
@@ -61,27 +61,27 @@ const EnrollmentForm = () => {
     };
 
     return (
-        <div className="container">
+        <div>
             <div className="header">
                 <img src="https://directus.crio.do/assets/b647b599-ae7a-41a4-98d2-d428a64cc768.webp" alt="Crio Logo" className="logo" />
                 <h1>Provisional Enrollment</h1>
             </div>
-            <div className="content">
+            <div className="container">
                 <div className="enrollment-details">
                     <h2>Crio.Do Provisional Enrollment</h2>
                     <p>Provisional Enrollment is a temporary enrollment process that allows you to secure a spot in a program or course before completing the full enrollment process. By providing your email and phone number, you are indicating your interest in enrolling and will be contacted with further instructions.</p>
                     <h3>Terms and Conditions:</h3>
                     <p>The provisional enrollment fees of ₹1,000/- is to block your scholarship for a period of 24 Hours and shall not be returned in case the learner decides to not move forward with the program.</p>
                     <p>You agree to share information entered on this page with Qift Solutech Private Limited (owner of this page) and Razorpay, adhering to applicable laws.</p>
-                    <div className="progress-bar">
-                        <div className="progress" style={{ width: `${(soldCount / 50) * 100}%` }}></div>
+                    <div className="progress-container">
                         <p>{soldCount} sold out of 50</p>
+                        <div className="progress-bar">
+                            <div className="progress" style={{ width: `${(soldCount / 50) * 100}%` }}></div>
+                        </div>
                     </div>
-                    <div className="contact-info">
-                        <p><strong>Contact Us:</strong></p>
-                        <p>📧 ping@criodo.com</p>
-                        <p>📞 06366528148</p>
-                    </div>
+                    <h3>Contact Us:</h3>
+                    <p>📧 ping@criodo.com</p>
+                    <p>📞 06366528148</p>
                 </div>
                 <div className="payment-details">
                     <h2>Payment Details</h2>
