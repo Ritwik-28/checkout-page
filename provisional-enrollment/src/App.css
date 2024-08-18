@@ -85,13 +85,21 @@ body {
   margin-top: 20px;
 }
 
+.payment-note {
+  font-size: 14px;
+  color: #a0a0a0;
+  margin-top: 15px;
+  text-align: center;
+}
+
 .progress-bar-container {
   margin-top: 10px;
   padding: 20px;
   background-color: #142d36;
   border-radius: 8px;
-  width: 100%; /* Adjust this if you want to increase the width */
-  box-sizing: border-box; /* Ensures padding is included in the width calculation */
+  width: 100%;
+  box-sizing: border-box;
+  height: auto; /* Set the height to auto so it adjusts to content */
 }
 
 .progress-bar {
@@ -113,15 +121,15 @@ body {
 .progress-bar-container p {
   color: #00ff84;
   margin: 0;
-  padding: 0 10px; /* Add horizontal padding */
+  padding: 0 10px;
 }
 
 .progress-bar-container p {
-  margin-top: 10px; /* Increase top margin for better spacing */
-  margin-bottom: 10px; /* Add bottom margin */
-  white-space: nowrap; /* Prevents text from wrapping */
-  overflow: hidden; /* Ensures overflow text is clipped */
-  text-overflow: ellipsis; /* Adds ellipsis to overflowing text */
+  margin-top: 10px;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media (max-width: 768px) {

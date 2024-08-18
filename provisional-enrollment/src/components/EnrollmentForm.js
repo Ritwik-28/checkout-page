@@ -98,8 +98,11 @@ const EnrollmentForm = () => {
                         />
                     </div>
                     <div className="payment-button">
-                        <form id="razorpay-form" onClick={handlePayNowClick}></form>
+                         <form id="razorpay-form" onClick={handlePayNowClick}></form>
                     </div>
+                    <p className="payment-note">
+                         Note: By clicking "Pay Now", you confirm your provisional enrollment. Please ensure your contact details are accurate. Our counsellor will get in touch with you to assist you with the further process.
+                    </p>
                 </div>
             </div>
             <div className="progress-bar-container">
