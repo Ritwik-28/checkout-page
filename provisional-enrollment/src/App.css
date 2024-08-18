@@ -1,66 +1,103 @@
-/* General Container Styling */
-.container {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+body {
+  font-family: Arial, sans-serif;
+  background-color: #0e2a33;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px), 
                     linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
   background-size: 50px 50px;
 }
 
-/* Top Strip Styling */
-.header {
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.top-strip {
+  background-color: #142d36;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 60px;
+}
+
+.top-strip h1 {
+  color: #00ff84;
+  margin: 0;
+  flex-grow: 1;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.content-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #0e2a33;
-  color: #00ff84;
-  border-bottom: 2px solid #324a52;
+  padding: 20px;
+  gap: 20px;
 }
 
-.header h1 {
-  text-align: center;
-  margin: 0 auto;
-  font-size: 24px;
-}
-
-/* Enrollment and Payment Details Containers */
-.enrollment-details,
+.enrollment-info,
 .payment-details {
   background-color: #142d36;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 48%;
+  flex: 1;
 }
 
-/* Razorpay Button Fix */
+.enrollment-info h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #00ff84;
+}
+
+.payment-details h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #00ff84;
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #324a52;
+  border-radius: 5px;
+  background-color: #102a33;
+  color: #ffffff;
+}
+
 .payment-button {
   text-align: center;
   margin-top: 20px;
 }
 
-.payment-button form {
-  display: inline-block;
-  width: 100%;
-}
-
-.razorpay-button {
-  display: inline-block;
-  background-color: transparent !important; /* Remove unwanted background */
-  border: none; /* Remove border if needed */
-}
-
-/* Progress Bar Styling */
-.progress-container {
-  margin-top: 20px;
+.progress-bar-container {
   background-color: #142d36;
-  border-radius: 8px;
   padding: 20px;
-  width: 100%;
+  border-radius: 8px;
+  margin-top: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .progress-bar {
@@ -76,16 +113,4 @@
   background-color: #3f51b5;
   height: 100%;
   border-radius: 20px;
-  width: 20%;
-}
-
-/* Reduced Input Box Size */
-.form-group input {
-  width: 80%; /* Adjust width as needed */
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #324a52;
-  border-radius: 5px;
-  background-color: #102a33;
-  color: #ffffff;
 }
