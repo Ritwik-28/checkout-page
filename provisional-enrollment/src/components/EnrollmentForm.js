@@ -6,7 +6,7 @@ const EnrollmentForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [soldCount, setSoldCount] = useState(10); // Initial count
+    const [soldCount, setSoldCount] = useState(10);
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -18,12 +18,11 @@ const EnrollmentForm = () => {
             setName(name);
             setEmail(email);
             setPhone(phone);
-            submitToGoogleSheet("Hello", email, phone, name); // Submit to Hello sheet on page load
+            submitToGoogleSheet("Hello", email, phone, name);
         } else {
             window.location.href = 'https://form.typeform.com/to/Ko438oSw';
         }
 
-        // Load Razorpay script dynamically
         const script = document.createElement('script');
         script.src = "https://checkout.razorpay.com/v1/payment-button.js";
         script.setAttribute('data-payment_button_id', 'pl_Oly4SGpv6WDzJr');
@@ -32,7 +31,7 @@ const EnrollmentForm = () => {
     }, []);
 
     const submitToGoogleSheet = async (sheet, email, phone, name = null) => {
-        const url = `https://script.google.com/macros/s/AKfycbzuCVv2xa3TGY1xZz3x69XJAs3-EaxAZnqcRK3V9igSBIRvwd4S26TwbVUwzHLYBpL4/exec`;
+        const url = `https://script.google.com/macros/s/AKfycbxMl4AVl9PWeZsSn6BRttltyurrbG26f_2foTR4DY9enNARdpFgmF6s6N1c3UPk420v/exec`;
     
         const params = new URLSearchParams({
             sheet,
@@ -54,10 +53,6 @@ const EnrollmentForm = () => {
         } catch (error) {
             console.error('Error appending to Google Sheets:', error);
         }
-    };
-
-    const handlePayNowClick = () => {
-        submitToGoogleSheet("YOLO", email, phone); // Submit to YOLO sheet on Pay Now click
     };
 
     return (
@@ -89,7 +84,6 @@ const EnrollmentForm = () => {
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Enter your email address"
                     />
                 </div>
                 <div className="form-group">
@@ -98,11 +92,10 @@ const EnrollmentForm = () => {
                         type="tel"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
-                        placeholder="Enter your 10 digit phone number"
                     />
                 </div>
                 <div className="payment-button">
-                    <form id="razorpay-form" onClick={handlePayNowClick}></form>
+                    <form id="razorpay-form" onClick={() => submitToGoogleSheet("YOLO", email, phone)}></form>
                 </div>
             </div>
         </div>
