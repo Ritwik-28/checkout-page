@@ -94,11 +94,11 @@ body {
 
 .progress-bar-container {
   margin-top: 10px;
-  padding: 20px;
+  padding: 15px; /* Reduced padding */
   background-color: #142d36;
   border-radius: 8px;
   width: 100%;
-  height: auto; /* This ensures the container height adjusts dynamically */
+  height: auto; /* This ensures the container adjusts dynamically */
   box-sizing: border-box;
 }
 
@@ -125,8 +125,8 @@ body {
 }
 
 .progress-bar-container p {
-  margin-top: 10px;
-  margin-bottom: 0; /* Adjust this to avoid overflow */
+  margin-top: 5px; /* Reduced top margin */
+  margin-bottom: 5px; /* Adjusted bottom margin */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
