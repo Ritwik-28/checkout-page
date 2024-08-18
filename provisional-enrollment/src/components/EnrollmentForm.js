@@ -6,7 +6,9 @@ const EnrollmentForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [soldCount, setSoldCount] = useState(10); // Initialize with 10
+    const [soldCount, setSoldCount] = useState(10); // Initial count
+
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbyRseS_2Od4_Uow-cIVaVvPRxvq_JeZXNSVA_T6N3o9kLf9t9EGN6gStSDGReLWkrhN/exec';
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -23,22 +25,7 @@ const EnrollmentForm = () => {
             window.location.href = 'https://form.typeform.com/to/Ko438oSw';
         }
 
-        // Fetch the sold count
-        const fetchSoldCount = async () => {
-            try {
-                const response = await axios.get("https://script.google.com/macros/s/AKfycbyRseS_2Od4_Uow-cIVaVvPRxvq_JeZXNSVA_T6N3o9kLf9t9EGN6gStSDGReLWkrhN/exec", {
-                    params: {
-                        action: "getSoldCount",
-                        sheet: "YOLO"
-                    }
-                });
-                setSoldCount(response.data.soldCount);
-            } catch (error) {
-                console.error("Error fetching sold count:", error);
-            }
-        };
-
-        fetchSoldCount();
+        fetchSoldCount(); // Fetch sold count when component mounts
 
         // Load Razorpay script dynamically
         const script = document.createElement('script');
@@ -48,9 +35,16 @@ const EnrollmentForm = () => {
         document.getElementById('razorpay-form').appendChild(script);
     }, []);
 
+    const fetchSoldCount = async () => {
+        try {
+            const response = await axios.get(`${scriptUrl}?action=getSoldCount`);
+            setSoldCount(response.data.soldCount);
+        } catch (error) {
+            console.error('Error fetching sold count:', error);
+        }
+    };
+
     const submitToGoogleSheet = async (sheet, email, phone, name = null) => {
-        const url = "https://script.google.com/macros/s/AKfycbyRseS_2Od4_Uow-cIVaVvPRxvq_JeZXNSVA_T6N3o9kLf9t9EGN6gStSDGReLWkrhN/exec";
-    
         const params = new URLSearchParams({
             sheet,
             email,
@@ -62,7 +56,7 @@ const EnrollmentForm = () => {
         }
     
         try {
-            const response = await axios.post(url, params, {
+            const response = await axios.post(scriptUrl, params, {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
@@ -74,7 +68,9 @@ const EnrollmentForm = () => {
     };
 
     const handlePayNowClick = () => {
-        submitToGoogleSheet("YOLO", email, phone); // Submit to YOLO sheet on Pay Now click
+        submitToGoogleSheet("YOLO", email, phone).then(() => {
+            fetchSoldCount(); // Refresh sold count after submitting
+        });
     };
 
     return (
@@ -115,10 +111,10 @@ const EnrollmentForm = () => {
                         />
                     </div>
                     <div className="payment-button">
-                         <form id="razorpay-form" onClick={handlePayNowClick}></form>
+                        <form id="razorpay-form" onClick={handlePayNowClick}></form>
                     </div>
                     <p className="payment-note">
-                         Note: By clicking "Pay Now", you confirm your provisional enrollment. Please ensure your contact details are accurate. Our counsellor will get in touch with you to assist you with the further process.
+                        Note: By clicking "Pay Now", you confirm your provisional enrollment. Please ensure your contact details are accurate. Our counsellor will get in touch with you to assist you with the further process.
                     </p>
                 </div>
             </div>
