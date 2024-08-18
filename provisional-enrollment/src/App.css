@@ -90,6 +90,8 @@ body {
   padding: 20px;
   background-color: #142d36;
   border-radius: 8px;
+  width: 100%; /* Adjust this if you want to increase the width */
+  box-sizing: border-box; /* Ensures padding is included in the width calculation */
 }
 
 .progress-bar {
@@ -117,6 +119,9 @@ body {
 .progress-bar-container p {
   margin-top: 10px; /* Increase top margin for better spacing */
   margin-bottom: 10px; /* Add bottom margin */
+  white-space: nowrap; /* Prevents text from wrapping */
+  overflow: hidden; /* Ensures overflow text is clipped */
+  text-overflow: ellipsis; /* Adds ellipsis to overflowing text */
 }
 
 @media (max-width: 768px) {
