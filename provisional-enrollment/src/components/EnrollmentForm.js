@@ -6,27 +6,9 @@ const EnrollmentForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [soldCount, setSoldCount] = useState(10); // Initial count set to 10
+    const [soldCount, setSoldCount] = useState(10); // Initial count
 
     useEffect(() => {
-        const fetchSoldCount = async () => {
-            try {
-                const response = await axios.get("https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec", {
-                    params: {
-                        action: 'getSoldCount',
-                        sheet: 'YOLO'
-                    }
-                });
-                if (response.data.soldCount !== undefined) {
-                    setSoldCount(response.data.soldCount);
-                }
-            } catch (error) {
-                console.error('Error fetching sold count:', error);
-            }
-        };
-
-        fetchSoldCount();
-
         const urlParams = new URLSearchParams(window.location.search);
         const name = urlParams.get('name');
         const email = urlParams.get('email');
@@ -41,6 +23,9 @@ const EnrollmentForm = () => {
             window.location.href = 'https://form.typeform.com/to/Ko438oSw';
         }
 
+        // Fetch the sold count
+        fetchSoldCount();
+
         // Load Razorpay script dynamically
         const script = document.createElement('script');
         script.src = "https://checkout.razorpay.com/v1/payment-button.js";
@@ -49,19 +34,34 @@ const EnrollmentForm = () => {
         document.getElementById('razorpay-form').appendChild(script);
     }, []);
 
+    const fetchSoldCount = async () => {
+        try {
+            const response = await axios.get('https://script.google.com/macros/s/AKfycbyRseS_2Od4_Uow-cIVaVvPRxvq_JeZXNSVA_T6N3o9kLf9t9EGN6gStSDGReLWkrhN/exec', {
+                params: {
+                    action: 'getSoldCount',
+                    sheet: 'YOLO'
+                }
+            });
+            const count = response.data.soldCount;
+            setSoldCount(count);
+        } catch (error) {
+            console.error('Error fetching sold count:', error);
+        }
+    };
+
     const submitToGoogleSheet = async (sheet, email, phone, name = null) => {
         const url = "https://script.google.com/macros/s/AKfycbyRseS_2Od4_Uow-cIVaVvPRxvq_JeZXNSVA_T6N3o9kLf9t9EGN6gStSDGReLWkrhN/exec";
-    
+
         const params = new URLSearchParams({
             sheet,
             email,
             phone
         });
-    
+
         if (name) {
             params.append('name', name);
         }
-    
+
         try {
             const response = await axios.post(url, params, {
                 headers: {
@@ -69,6 +69,7 @@ const EnrollmentForm = () => {
                 }
             });
             console.log('Success:', response.data);
+            fetchSoldCount(); // Refresh the sold count after submission
         } catch (error) {
             console.error('Error appending to Google Sheets:', error);
         }
