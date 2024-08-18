@@ -6,20 +6,20 @@ const EnrollmentForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [soldCount, setSoldCount] = useState(10); // Default value
+    const [soldCount, setSoldCount] = useState(10); // Initial count set to 10
 
     useEffect(() => {
         const fetchSoldCount = async () => {
             try {
-                const response = await axios.get('https://script.google.com/macros/s/AKfycbzuCVv2xa3TGY1xZz3x69XJAs3-EaxAZnqcRK3V9igSBIRvwd4S26TwbVUwzHLYBpL4/exec', {
+                const response = await axios.get("https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec", {
                     params: {
-                        sheet: 'YOLO',
                         action: 'getSoldCount',
-                    },
+                        sheet: 'YOLO'
+                    }
                 });
-                let count = response.data.soldCount;
-                count = count > 50 ? 48 : count; // Cap the count at 48 if it exceeds 50
-                setSoldCount(count);
+                if (response.data.soldCount !== undefined) {
+                    setSoldCount(response.data.soldCount);
+                }
             } catch (error) {
                 console.error('Error fetching sold count:', error);
             }
@@ -50,7 +50,7 @@ const EnrollmentForm = () => {
     }, []);
 
     const submitToGoogleSheet = async (sheet, email, phone, name = null) => {
-        const url = "https://script.google.com/macros/s/AKfycbzuCVv2xa3TGY1xZz3x69XJAs3-EaxAZnqcRK3V9igSBIRvwd4S26TwbVUwzHLYBpL4/exec";
+        const url = "https://script.google.com/macros/s/AKfycbzDQmh0Qcjfn_mnc5ThwPT1sUifUFFQyeMSMoLPMgpgkhzN6PKL42_IfdWCmaQ_RPBG/exec";
     
         const params = new URLSearchParams({
             sheet,
@@ -69,10 +69,6 @@ const EnrollmentForm = () => {
                 }
             });
             console.log('Success:', response.data);
-            setSoldCount((prevCount) => {
-                const newCount = prevCount + 1;
-                return newCount > 50 ? 48 : newCount;
-            });
         } catch (error) {
             console.error('Error appending to Google Sheets:', error);
         }
