@@ -87,7 +87,6 @@ const EnrollmentForm = () => {
             </div>
             <div className="content-container">
                 <div className="enrollment-details">
-                    <h2>Crio.Do Provisional Enrollment</h2>
                     <h3>Secure Your Spot in Crio.Do's Next Batch with Provisional Enrollment!</h3>
                         <ul>
                              <li><strong>Lock in Your Seat Today!</strong></li>
