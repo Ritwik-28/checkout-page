@@ -23,7 +23,7 @@ const EnrollmentForm = () => {
             window.location.href = 'https://form.typeform.com/to/Ko438oSw';
         }
 
-        // Fetch the sold count
+        // Fetch the sold count on page load
         fetchSoldCount();
 
         // Load Razorpay script dynamically
@@ -34,34 +34,19 @@ const EnrollmentForm = () => {
         document.getElementById('razorpay-form').appendChild(script);
     }, []);
 
-    const fetchSoldCount = async () => {
-        try {
-            const response = await axios.get('https://script.google.com/macros/s/AKfycbyRseS_2Od4_Uow-cIVaVvPRxvq_JeZXNSVA_T6N3o9kLf9t9EGN6gStSDGReLWkrhN/exec', {
-                params: {
-                    action: 'getSoldCount',
-                    sheet: 'YOLO'
-                }
-            });
-            const count = response.data.soldCount;
-            setSoldCount(count);
-        } catch (error) {
-            console.error('Error fetching sold count:', error);
-        }
-    };
-
     const submitToGoogleSheet = async (sheet, email, phone, name = null) => {
         const url = "https://script.google.com/macros/s/AKfycbyRseS_2Od4_Uow-cIVaVvPRxvq_JeZXNSVA_T6N3o9kLf9t9EGN6gStSDGReLWkrhN/exec";
-
+    
         const params = new URLSearchParams({
             sheet,
             email,
             phone
         });
-
+    
         if (name) {
             params.append('name', name);
         }
-
+    
         try {
             const response = await axios.post(url, params, {
                 headers: {
@@ -69,9 +54,19 @@ const EnrollmentForm = () => {
                 }
             });
             console.log('Success:', response.data);
-            fetchSoldCount(); // Refresh the sold count after submission
         } catch (error) {
             console.error('Error appending to Google Sheets:', error);
+        }
+    };
+
+    const fetchSoldCount = async () => {
+        const url = "https://script.google.com/macros/s/AKfycbyRseS_2Od4_Uow-cIVaVvPRxvq_JeZXNSVA_T6N3o9kLf9t9EGN6gStSDGReLWkrhN/exec";
+        try {
+            const response = await axios.get(`${url}?action=getSoldCount`);
+            const count = response.data.soldCount || 10; // Fallback to 10 if undefined
+            setSoldCount(count);
+        } catch (error) {
+            console.error('Error fetching sold count:', error);
         }
     };
 
