@@ -6,9 +6,9 @@ const EnrollmentForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [soldCount, setSoldCount] = useState(10); // Initial count
+    const [soldCount, setSoldCount] = useState(10); // Default initial count
 
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbyRseS_2Od4_Uow-cIVaVvPRxvq_JeZXNSVA_T6N3o9kLf9t9EGN6gStSDGReLWkrhN/exec';
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbzSIRkFCWoWfDP6ff3jofIyKNruFzRv0nhInLgBFSunsjemCbBzUcfNdPAF_VFQzg8c/exec';
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -38,9 +38,15 @@ const EnrollmentForm = () => {
     const fetchSoldCount = async () => {
         try {
             const response = await axios.get(`${scriptUrl}?action=getSoldCount`);
-            setSoldCount(response.data.soldCount);
+            const count = response.data.soldCount;
+            if (count && !isNaN(count)) {
+                setSoldCount(count);
+            } else {
+                setSoldCount(10); // Fallback to default if no valid data is returned
+            }
         } catch (error) {
             console.error('Error fetching sold count:', error);
+            setSoldCount(10); // Fallback to default in case of error
         }
     };
 
