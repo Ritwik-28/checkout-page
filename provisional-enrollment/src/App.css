@@ -4,66 +4,57 @@ body {
   color: #ffffff;
   margin: 0;
   padding: 0;
-  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px), 
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
                     linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
   background-size: 50px 50px;
 }
 
-.page-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 100vh;
-  padding: 20px;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .top-strip {
   background-color: #142d36;
-  padding: 10px 20px;
+  padding: 40px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
 }
 
-.logo {
-  width: 60px;
+.top-strip .logo {
+  max-width: 120px;
+  margin-right: 20px;
 }
 
 .top-strip h1 {
+  font-size: 36px;
   color: #00ff84;
   margin: 0;
-  flex-grow: 1;
-  text-align: center;
-  font-size: 1.5rem;
 }
 
-.content-container {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-  gap: 20px;
-}
-
-.enrollment-info,
+.enrollment-details,
 .payment-details {
   background-color: #142d36;
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  flex: 1;
+  width: 45%;
+  margin: 10px;
 }
 
-.enrollment-info h2 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  color: #00ff84;
+.enrollment-details {
+  float: left;
 }
 
+.payment-details {
+  float: right;
+}
+
+.enrollment-details h2,
 .payment-details h2 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
+  font-size: 24px;
   color: #00ff84;
-  text-align: left;
+  margin-bottom: 20px;
 }
 
 .form-group {
@@ -86,18 +77,12 @@ body {
   color: #ffffff;
 }
 
-.payment-button {
-  text-align: center;
-  margin-top: 20px;
-}
-
 .progress-bar-container {
+  clear: both;
   background-color: #142d36;
-  padding: 20px;
   border-radius: 8px;
+  padding: 20px;
   margin-top: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
 }
 
 .progress-bar {
@@ -106,11 +91,33 @@ body {
   height: 10px;
   width: 100%;
   position: relative;
-  margin-bottom: 10px;
+  margin-top: 20px;
 }
 
 .progress {
   background-color: #3f51b5;
   height: 100%;
   border-radius: 20px;
+  width: 20%;
+}
+
+.payment-button {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.razorpay-button {
+  background-color: #ffde03;
+  color: #142d36;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
 }
