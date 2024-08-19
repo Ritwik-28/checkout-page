@@ -98,8 +98,8 @@ body {
 
 .enrollment-details h2,
 .payment-details h2,
-.progress-bar-container h3 {
-  font-size: 24px;
+.progress-bar-container h4 {
+  font-size: 20px;
   margin-bottom: 20px;
   color: #004246;
   text-transform: uppercase;
@@ -171,7 +171,7 @@ body {
 
 .progress-bar-container {
   width: 100%; /* Take up full width of parent container */
-  padding: 15px 20px;
+  padding: 10px 10px;
   margin-top: 15px; /* Space between payment details and enrollments done */
   background: rgba(255, 255, 255, 0.85);
   border-radius: 15px;
@@ -222,7 +222,8 @@ body {
 @media (max-width: 768px) {
   .content-container {
       flex-direction: column;
-      padding: 0 15px; /* Reduced padding for mobile */
+      padding: 10px 15px;
+      font-size: 16px; /* Reduced padding for mobile */
   }
 
   .enrollment-details, 
