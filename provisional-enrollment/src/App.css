@@ -63,6 +63,7 @@ body {
   width: 100%;
   box-sizing: border-box;
   flex-wrap: wrap;
+  align-items: stretch; /* Ensure all child elements have the same height */
 }
 
 .enrollment-details,
@@ -73,7 +74,10 @@ body {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-sizing: border-box;
-  margin-bottom: 0; /* Ensure no additional margin at the bottom of individual containers */
+  margin-bottom: 0;
+  flex: 1; /* Allow these containers to grow and fill the available space equally */
+  display: flex;
+  flex-direction: column; /* Ensure child elements stack vertically */
 }
 
 .enrollment-details:hover,
@@ -98,8 +102,8 @@ body {
 
 .enrollment-details h2,
 .payment-details h2,
-.progress-bar-container h4 {
-  font-size: 20px;
+.progress-bar-container h3 {
+  font-size: 22px; /* Adjusted font size */
   margin-bottom: 20px;
   color: #004246;
   text-transform: uppercase;
@@ -171,13 +175,12 @@ body {
 
 .progress-bar-container {
   width: 100%; /* Take up full width of parent container */
-  padding: 20px; /* Increased padding for better content fitting */
-  margin-top: auto; /* Push to the bottom of the payment details container */
+  padding: 15px; /* Adjusted padding for better fit */
   background: rgba(255, 255, 255, 0.85);
   border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
-  text-align: center; /* Center text in the container */
+  text-align: left; /* Align text to the left */
 }
 
 .progress-bar {
@@ -197,12 +200,9 @@ body {
 }
 
 .progress-bar-container p {
-  margin-top: 10px;
+  margin: 10px 0 0; /* Remove top margin to align content properly */
   color: #009378;
   font-size: 14px; /* Adjusted font size */
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -224,8 +224,7 @@ body {
 @media (max-width: 768px) {
   .content-container {
       flex-direction: column;
-      padding: 10px 15px;
-      font-size: 16px; /* Reduced padding for mobile */
+      padding: 0 15px; /* Reduced padding for mobile */
   }
 
   .enrollment-details, 
@@ -235,7 +234,7 @@ body {
 
   .progress-bar-container {
       width: 100%; /* Ensure full width on mobile as well */
-      margin-top: 15px;
+      padding: 15px;
   }
 
   .top-strip .logo {
