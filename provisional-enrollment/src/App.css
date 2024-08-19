@@ -2,13 +2,11 @@
 
 body {
   font-family: 'Rubik', sans-serif;
-  background-color: #ffffff;
   color: #ffffff;
   margin: 0;
   padding: 0;
-  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px), 
-                    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 50px 50px;
+  background: linear-gradient(135deg, #0e2a33 25%, #142d36 75%);
+  background-size: cover;
 }
 
 .container {
@@ -16,52 +14,69 @@ body {
   flex-direction: column;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 10px 20px;
+  padding: 20px 40px;
+  backdrop-filter: blur(10px);
 }
 
 .top-strip {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #0a1e29;
-  padding: 20px;
+  background: linear-gradient(135deg, #0a1e29 0%, #1c3b47 100%);
+  padding: 25px;
   font-family: 'Manrope', sans-serif;
-  border-radius: 15px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .top-strip .logo {
   width: 80px;
+  transition: transform 0.3s ease;
+}
+
+.top-strip .logo:hover {
+  transform: scale(1.1);
 }
 
 .top-strip-heading {
-  font-size: 24px;
+  font-size: 28px;
   margin: 0;
   color: #00ff84;
   text-align: center;
   flex-grow: 1;
+  letter-spacing: 1.5px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .content-container {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
-  gap: 20px;
+  padding: 30px;
+  gap: 30px;
 }
 
 .enrollment-details,
 .payment-details {
-  background-color: #142d36;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 45%;
+  background: rgba(20, 45, 54, 0.85);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.enrollment-details:hover,
+.payment-details:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
 }
 
 .enrollment-details h2,
 .payment-details h2 {
-  font-size: 20px;
+  font-size: 24px;
   margin-bottom: 20px;
   color: #00ff84;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
 }
 
 .form-group {
@@ -70,55 +85,82 @@ body {
 
 .form-group label {
   display: block;
-  margin-bottom: 5px;
-  font-size: 14px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  letter-spacing: 0.5px;
 }
 
 .form-group input {
-  width: 80%;
-  padding: 10px;
-  font-size: 14px;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
   border: 1px solid #324a52;
-  border-radius: 5px;
+  border-radius: 8px;
   background-color: #102a33;
   color: #ffffff;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #00ff84;
+  background-color: #142d36;
+  outline: none;
 }
 
 .payment-button {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 25px;
+}
+
+.payment-button button {
+  background-color: #00ff84;
+  color: #0e2a33;
+  font-size: 16px;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.payment-button button:hover {
+  background-color: #00d472;
+  transform: translateY(-3px);
 }
 
 .payment-note {
-  font-size: 14px;
+  font-size: 16px;
   color: #a0a0a0;
-  margin-top: 15px;
+  margin-top: 20px;
   text-align: center;
+  font-style: italic;
 }
 
 .progress-bar-container {
-  margin-top: 10px;
-  padding: 20px;
-  background-color: #142d36;
-  border-radius: 8px;
+  margin-top: 15px;
+  padding: 25px;
+  background: rgba(20, 45, 54, 0.85);
+  border-radius: 15px;
   width: 100%; 
   box-sizing: border-box; 
-  min-height: 120px; /* Adjusted height to fit content */
+  min-height: 150px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .progress-bar {
   background-color: #324a52;
   border-radius: 20px;
-  height: 10px;
+  height: 12px;
   width: 100%;
   position: relative;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .progress {
   background-color: #3f51b5;
   height: 100%;
   border-radius: 20px;
+  transition: width 0.5s ease;
 }
 
 .progress-bar-container h3,
@@ -126,10 +168,11 @@ body {
   color: #00ff84;
   margin: 0;
   padding: 0 10px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
 }
 
 .progress-bar-container p {
-  margin-top: 10px;
+  margin-top: 15px;
   margin-bottom: 10px;
   white-space: nowrap;
   overflow: hidden;
@@ -139,6 +182,7 @@ body {
 @media (max-width: 768px) {
   .content-container {
       flex-direction: column;
+      padding: 20px;
   }
 
   .enrollment-details, 
@@ -151,6 +195,6 @@ body {
   }
 
   .top-strip-heading {
-      font-size: 20px;
+      font-size: 22px;
   }
 }
