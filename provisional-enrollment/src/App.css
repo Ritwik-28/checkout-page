@@ -6,8 +6,8 @@ body {
   color: #ffffff;
   margin: 0;
   padding: 0;
-  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px), 
-                    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.295) 1px, transparent 1px), 
+                    linear-gradient(rgba(255, 255, 255, 0.295) 1px, transparent 1px);
   background-size: 50px 50px;
   overflow-x: hidden; /* Prevent horizontal scroll */
 }
@@ -177,10 +177,11 @@ body {
   padding: 10px; /* Increased padding for better content fitting */
   margin-top: 15px; /* Push to the bottom of the payment details container */
   background: #009378;
+  color: #ffffff;
   border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
-  text-align: center; /* Center text in the container */
+  text-align: left; /* Center text in the container */
 }
 
 .progress-bar {

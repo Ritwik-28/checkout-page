@@ -47,7 +47,7 @@ const EnrollmentForm = () => {
             }
         } catch (error) {
             console.error('Error fetching sold count:', error);
-            setSoldCount(10); // Fallback to 10 if fetch fails
+            setSoldCount(16); // Fallback to 10 if fetch fails
         }
     };
 
