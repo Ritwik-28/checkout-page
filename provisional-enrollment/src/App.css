@@ -171,12 +171,13 @@ body {
 
 .progress-bar-container {
   width: 100%; /* Take up full width of parent container */
-  padding: 10px 10px;
-  margin-top: 15px; /* Space between payment details and enrollments done */
+  padding: 20px; /* Increased padding for better content fitting */
+  margin-top: auto; /* Push to the bottom of the payment details container */
   background: rgba(255, 255, 255, 0.85);
   border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
+  text-align: center; /* Center text in the container */
 }
 
 .progress-bar {
@@ -198,6 +199,7 @@ body {
 .progress-bar-container p {
   margin-top: 10px;
   color: #009378;
+  font-size: 14px; /* Adjusted font size */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
