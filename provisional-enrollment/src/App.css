@@ -14,7 +14,7 @@ body {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  padding: 0;
+  padding: 0;  /* Removed padding to fix the left margin issue */
   backdrop-filter: blur(10px);
 }
 
@@ -51,6 +51,7 @@ body {
 .content-container {
   display: flex;
   justify-content: space-between;
+  padding: 0px;
   margin-top: 30px;
   gap: 30px;
   width: 100%;
@@ -60,7 +61,7 @@ body {
 .payment-details {
   background: rgba(255, 255, 255, 0.85);
   border-radius: 15px;
-  padding: 25px;
+  padding: 25px;  /* Added padding inside the containers */
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -143,7 +144,7 @@ body {
 }
 
 .payment-note {
-  font-size: 14px; /* Reduced font size */
+  font-size: 14px;  /* Reduced font size */
   color: #a0a0a0;
   margin-top: 20px;
   text-align: center;
@@ -190,6 +191,20 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.highlight-container {
+  background-color: #02BF91;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.highlight-container h2 {
+  margin: 0;
+  font-size: 26px;
 }
 
 @media (max-width: 768px) {
