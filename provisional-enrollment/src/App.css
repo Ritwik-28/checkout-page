@@ -2,7 +2,7 @@
 
 body {
   font-family: 'Rubik', sans-serif;
-  color: #333333; /* Darker text for better readability */
+  color: #333333;
   margin: 0;
   padding: 0;
   background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
@@ -12,9 +12,9 @@ body {
   display: flex;
   flex-direction: column;
   max-width: 1200px;
-  width: 100%; /* Full width */
+  width: 100%;
   margin: 0 auto;
-  padding: 20px 40px;
+  padding: 0;
   backdrop-filter: blur(10px);
 }
 
@@ -41,7 +41,7 @@ body {
 .top-strip-heading {
   font-size: 28px;
   margin: 0;
-  color: #004246;
+  color: #2DF8C5;
   text-align: center;
   flex-grow: 1;
   letter-spacing: 1.5px;
@@ -51,15 +51,14 @@ body {
 .content-container {
   display: flex;
   justify-content: space-between;
-  padding: 0px;
   margin-top: 30px;
   gap: 30px;
-  width: 100%; /* Full width */
+  width: 100%;
 }
 
 .enrollment-details,
 .payment-details {
-  background: rgba(255, 255, 255, 0.85); /* Slightly transparent white */
+  background: rgba(255, 255, 255, 0.85);
   border-radius: 15px;
   padding: 25px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
@@ -73,11 +72,11 @@ body {
 }
 
 .enrollment-details {
-  width: 60%; /* Increased width */
+  width: 60%;
 }
 
 .payment-details {
-  width: 35%; /* Reduced width */
+  width: 35%;
 }
 
 .enrollment-details h2,
@@ -107,8 +106,8 @@ body {
   font-size: 16px;
   border: 1px solid #324a52;
   border-radius: 8px;
-  background-color: #ffffff; /* White background for input */
-  color: #333333; /* Darker text for better readability */
+  background-color: #ffffff;
+  color: #333333;
   transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
@@ -118,6 +117,10 @@ body {
   outline: none;
 }
 
+.form-group:last-child {
+  margin-bottom: 30px;
+}
+
 .payment-button {
   text-align: center;
   margin-top: 25px;
@@ -125,7 +128,7 @@ body {
 
 .payment-button button {
   background-color: #009378;
-  color: #ffffff; /* White text for button */
+  color: #ffffff;
   font-size: 16px;
   padding: 12px 30px;
   border: none;
@@ -140,7 +143,7 @@ body {
 }
 
 .payment-note {
-  font-size: 16px;
+  font-size: 14px; /* Reduced font size */
   color: #a0a0a0;
   margin-top: 20px;
   text-align: center;
@@ -150,10 +153,10 @@ body {
 .progress-bar-container {
   margin-top: 15px;
   padding: 25px;
-  background: rgba(255, 255, 255, 0.85); /* Slightly transparent white */
+  background: rgba(255, 255, 255, 0.85);
   border-radius: 15px;
-  width: 100%; 
-  box-sizing: border-box; 
+  width: 100%;
+  box-sizing: border-box;
   min-height: 150px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
