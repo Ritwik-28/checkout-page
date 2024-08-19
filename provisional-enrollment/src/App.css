@@ -67,9 +67,9 @@ body {
 
 .enrollment-details,
 .payment-details {
-  background: rgba(255, 255, 255, 0.85);
+  background: #186661;
   border-radius: 15px;
-  padding: 10px;
+  padding: 15px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-sizing: border-box;
@@ -90,7 +90,7 @@ body {
   width: 35%; /* Reduced width */
   padding: 15px 20px; /* Reduced padding to decrease height */
   margin-bottom: 15px;
-  background: rgba(255, 255, 255, 0.85);
+  background: #186661;
   border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
@@ -101,7 +101,7 @@ body {
 .progress-bar-container h4 {
   font-size: 20px;
   margin-bottom: 20px;
-  color: #004246;
+  color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 1.2px;
 }

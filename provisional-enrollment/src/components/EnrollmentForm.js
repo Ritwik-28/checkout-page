@@ -94,14 +94,15 @@ const EnrollmentForm = () => {
                 <li>Lock in Your Seat Today!</li>
                 <li>Limited Spots Available—Act Fast to Reserve Yours!</li>
             </ul>
-            <p>By choosing Crio.Do's Provisional Enrollment, you guarantee a place in our upcoming batch. Don't miss this chance to jumpstart your tech career with us. Enroll now and access our world-class training program.</p>
-            <h3>Terms and Conditions:</h3>
-            <p>The provisional enrollment fees of ₹1,000/- is to block your scholarship for a period of 24 Hours and shall not be returned in case the learner decides to not move forward with the program.</p>
-            <p>You agree to share information entered on this page with Qift Solutech Private Limited (owner of this page) and Razorpay, adhering to applicable laws.</p>
+            <p>By choosing Crio.Do's Provisional Enrollment, you guarantee a place in our upcoming batch. Don't miss this chance to jumpstart your tech career with us. Enroll now and access our world-class training program. </li>
+            <ul><h3>Terms and Conditions:</h3>
+            <li>The provisional enrollment fees of ₹1,000/- is to block your scholarship for a period of 24 Hours and shall not be returned in case the learner decides to not move forward with the program.</p>
+            <li>You agree to share information entered on this page with Qift Solutech Private Limited (owner of this page) and Razorpay, adhering to applicable laws. <li>
+            </ul>
             <div className="contact-info">
-                <p><strong>Contact Us:</strong></p>
-                <p>📧 ping@criodo.com</p>
-                <p>📞 06366528148</p>
+                <p><center><strong>Contact Us</strong></center></p>
+                <p><center>📧 ping@criodo.com</center></p>
+                <p><center>📞 06366528148</center></p>
             </div>
         </div>
         <div className="payment-details">
