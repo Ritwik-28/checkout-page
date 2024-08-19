@@ -130,7 +130,7 @@ const EnrollmentForm = () => {
                     <p className="payment-note">
                         Note: By clicking "Pay Now", you confirm your provisional enrollment. Please ensure your contact details are accurate. Our counsellor will get in touch with you to assist you with the further process.
                     </p>
-                </div>
+                
            
             <div className="progress-bar-container">
                 <h3>Enrollments Done Till Now:</h3>
@@ -138,6 +138,7 @@ const EnrollmentForm = () => {
                     <div className="progress" style={{ width: `${(soldCount / 50) * 100}%` }}></div>
                     <p>{soldCount} sold out of 50</p>
                 </div>
+               </div>
             </div>
         </div>
     </div>
