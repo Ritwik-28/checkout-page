@@ -100,8 +100,7 @@ body {
 }
 
 .enrollment-details h2,
-.payment-details h2,
-.progress-bar-container h4 {
+.payment-details h2,{
   font-size: 20px;
   margin-bottom: 20px;
   color: #004246;
@@ -182,6 +181,14 @@ body {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
   text-align: left; /* Center text in the container */
+}
+
+.progress-bar-container h4 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
 }
 
 .progress-bar {
