@@ -172,7 +172,7 @@ body {
 .progress-bar-container {
   width: 100%; /* Take up full width of parent container */
   padding: 10px; /* Increased padding for better content fitting */
-  margin-top: 10px; /* Push to the bottom of the payment details container */
+  margin-top: -10px; /* Push to the bottom of the payment details container */
   background: rgba(255, 255, 255, 0.85);
   border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
