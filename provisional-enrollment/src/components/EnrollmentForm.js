@@ -132,13 +132,14 @@ const EnrollmentForm = () => {
                     </p>
                 
            
-            <div className="progress-bar-container">
-                <h3>Enrollments Done Till Now:</h3>
-                <div className="progress-bar">
-                    <div className="progress" style={{ width: `${(soldCount / 50) * 100}%` }}></div>
-                    <p>{soldCount} sold out of 50</p>
-                </div>
-               </div>
+                    <div className="progress-bar-container">
+    <h3>Enrollments Done Till Now:</h3>
+    <div className="progress-bar">
+        <div className="progress" style={{ width: `${(soldCount / 50) * 100}%` }}></div>
+    </div>
+    <p className="progress-text">{soldCount} sold out of 50</p>
+</div>
+
             </div>
         </div>
     </div>
