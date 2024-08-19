@@ -2,10 +2,12 @@
 
 body {
   font-family: 'Rubik', sans-serif;
-  color: #333333;
+  background-color: #0e2a33;
+  color: #ffffff;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #004246 0%, #f0f0f0 100%);
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px), 
+                    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
@@ -67,7 +69,7 @@ body {
 
 .enrollment-details,
 .payment-details {
-  background: #186661;
+  background: #009378;
   border-radius: 15px;
   padding: 15px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
@@ -101,7 +103,7 @@ body {
 .progress-bar-container h4 {
   font-size: 20px;
   margin-bottom: 20px;
-  color: #ffffff;
+  color: #00ff84;
   text-transform: uppercase;
   letter-spacing: 1.2px;
 }
@@ -173,7 +175,7 @@ body {
   width: 100%; /* Take up full width of parent container */
   padding: 10px; /* Increased padding for better content fitting */
   margin-top: 15px; /* Push to the bottom of the payment details container */
-  background: rgba(255, 255, 255, 0.85);
+  background: #009378;
   border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
@@ -190,7 +192,7 @@ body {
 }
 
 .progress {
-  background-color: #02BF91;
+  background-color: #3f51b5;
   height: 100%;
   border-radius: 20px;
   transition: width 0.5s ease;
@@ -198,7 +200,7 @@ body {
 
 .progress-bar-container p {
   margin-top: 8px;
-  color: #009378;
+  color: #ffffff;
   font-size: 12px; /* Adjusted font size */
   white-space: nowrap;
   overflow: hidden;
@@ -207,7 +209,7 @@ body {
 }
 
 .highlight-container {
-  background-color: #02BF91;
+  background-color: #2DF8C5;
   color: white;
   padding: 10px;
   border-radius: 10px;
