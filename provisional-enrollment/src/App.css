@@ -88,7 +88,7 @@ body {
 
 .payment-details {
   width: 35%; /* Reduced width */
-  padding: 15px 25px;
+  padding: 15px 20px; /* Reduced padding to decrease height */
   margin-bottom: 15px;
   background: rgba(255, 255, 255, 0.85);
   border-radius: 15px;
@@ -97,7 +97,8 @@ body {
 }
 
 .enrollment-details h2,
-.payment-details h2 {
+.payment-details h2,
+.progress-bar-container h3 {
   font-size: 24px;
   margin-bottom: 20px;
   color: #004246;
@@ -108,7 +109,6 @@ body {
 .form-group {
   margin-bottom: 20px;
 }
-
 .form-group label {
   display: block;
   margin-bottom: 8px;
@@ -118,7 +118,7 @@ body {
 
 .form-group input {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   margin-right: 12px;
   font-size: 16px;
   border: 1px solid #324a52;
@@ -141,14 +141,14 @@ body {
 
 .payment-button {
   text-align: center;
-  margin-top: 25px;
+  margin-top: 15px;
 }
 
 .payment-button button {
   background-color: #009378;
   color: #ffffff;
   font-size: 16px;
-  padding: 12px 30px;
+  padding: 10px 25px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -161,22 +161,22 @@ body {
 }
 
 .payment-note {
-  font-size: 14px;
+  font-size: 9px;
   color: #a0a0a0;
-  margin-top: 20px;
+  margin-top: 15px;
   text-align: center;
   font-style: italic;
 }
 
 .progress-bar-container {
   width: 35%; /* Same width as payment details */
-  padding: 15px 25px;
+  padding: 15px 20px;
+  margin-top: 15px; /* Space between payment details and enrollments done */
   background: rgba(255, 255, 255, 0.85);
   border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
 }
-
 .progress-bar {
   background-color: #e0e0e0;
   border-radius: 20px;
@@ -193,19 +193,13 @@ body {
   transition: width 0.5s ease;
 }
 
-.progress-bar-container h3,
-.progress-bar-container p {
-  color: #009378;
-  margin: 0;
-  padding: 0 10px;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-}
-
 .progress-bar-container p {
   margin-top: 10px;
+  color: #009378;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
 }
 
 .highlight-container {
