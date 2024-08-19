@@ -171,7 +171,7 @@ body {
 
 .progress-bar-container {
   width: 100%; /* Take up full width of parent container */
-  padding: 7px; /* Increased padding for better content fitting */
+  padding: 15px; /* Increased padding for better content fitting */
   margin-top: auto; /* Push to the bottom of the payment details container */
   background: rgba(255, 255, 255, 0.85);
   border-radius: 15px;
@@ -199,7 +199,7 @@ body {
 .progress-bar-container p {
   margin-top: 8px;
   color: #009378;
-  font-size: 9px; /* Adjusted font size */
+  font-size: 12px; /* Adjusted font size */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

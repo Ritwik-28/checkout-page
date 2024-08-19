@@ -133,7 +133,7 @@ const EnrollmentForm = () => {
                 
            
                     <div className="progress-bar-container">
-    <h3>Enrollments Done Till Now:</h3>
+    <h4>Enrollments Done Till Now</h4>
     <div className="progress-bar">
         <div className="progress" style={{ width: `${(soldCount / 50) * 100}%` }}></div>
     </div>
