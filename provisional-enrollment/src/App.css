@@ -107,7 +107,7 @@ body {
 }
 
 .progress {
-  background-color: #004246;
+  background-color: #02BF91;
   height: 100%;
   border-radius: 20px;
   transition: width 0.5s ease;
@@ -115,7 +115,7 @@ body {
 
 .enrollment-details h2,
 .payment-details h2 {
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 20px;
   color: #004246;
   text-transform: uppercase;
@@ -187,7 +187,7 @@ body {
 
 .progress-bar-container h3,
 .progress-bar-container p {
-  color: #009378;
+  color: #004246;
   margin: 0;
   padding: 0 10px;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
@@ -212,7 +212,7 @@ body {
 
 .highlight-container h2 {
   margin: 0;
-  font-size: 26px;
+  font-size: 20px;
 }
 
 @media (max-width: 768px) {
