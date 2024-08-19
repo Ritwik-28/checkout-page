@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&family=Rubik:wght@400;700&display=swap');
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #0e2a33;
+  font-family: 'Rubik', sans-serif;
+  background-color: #ffffff;
   color: #ffffff;
   margin: 0;
   padding: 0;
@@ -23,6 +25,8 @@ body {
   align-items: center;
   background-color: #0a1e29;
   padding: 20px;
+  font-family: 'Manrope', sans-serif;
+  border-radius: 15px;
 }
 
 .top-strip .logo {
