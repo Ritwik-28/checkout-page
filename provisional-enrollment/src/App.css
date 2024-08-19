@@ -20,7 +20,7 @@ body {
   box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
 }
 
-.top-strip {
+.top-strip {  
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -30,6 +30,8 @@ body {
   font-family: 'Manrope', sans-serif;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
+  border-radius: 15px; /* Added rounded corners */
+  margin-top: 10px; /* Added margin-top */
 }
 
 .top-strip .logo {
@@ -54,9 +56,10 @@ body {
 .content-container {
   display: flex;
   justify-content: space-between;
-  padding: 0 15px; /* Adjust padding to ensure it fits within mobile screens */
+  padding: 0 15px;
   margin-top: 30px;
-  gap: 30px;
+  margin-bottom: 30px;
+  gap: 15px; 
   width: 100%;
   box-sizing: border-box;
 }
@@ -68,7 +71,8 @@ body {
   padding: 25px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+  box-sizing: border-box;
+  margin-bottom: 0; /* Ensure no additional margin at the bottom of individual containers */
 }
 
 .enrollment-details:hover,
