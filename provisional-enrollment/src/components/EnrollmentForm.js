@@ -6,7 +6,7 @@ const EnrollmentForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [soldCount, setSoldCount] = useState(10); // Default count of 10
+    const [soldCount, setSoldCount] = useState(16); // Default count of 10
 
     const scriptURL = "https://script.google.com/macros/s/AKfycbxrSJqpnC0ezXTAbzjfvKUAKrPKJ44ZzqMoOReItT8sd6QlJl6Ms6-hdcWmeowiYGGM/exec";
 
