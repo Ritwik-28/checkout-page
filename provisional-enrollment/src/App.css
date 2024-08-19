@@ -41,7 +41,7 @@ body {
 .top-strip-heading {
   font-size: 28px;
   margin: 0;
-  color: #009378;
+  color: #004246;
   text-align: center;
   flex-grow: 1;
   letter-spacing: 1.5px;
@@ -52,6 +52,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 0px;
+  margin-top: 30px;
   gap: 30px;
   width: 100%; /* Full width */
 }
@@ -83,7 +84,7 @@ body {
 .payment-details h2 {
   font-size: 24px;
   margin-bottom: 20px;
-  color: #009378;
+  color: #004246;
   text-transform: uppercase;
   letter-spacing: 1.2px;
 }
@@ -112,7 +113,7 @@ body {
 }
 
 .form-group input:focus {
-  border-color: #009378;
+  border-color: #004246;
   background-color: #f0f0f0;
   outline: none;
 }
