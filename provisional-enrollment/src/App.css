@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: hidden;
 }
 
 .container {
@@ -17,7 +17,7 @@ body {
   margin: 0 auto;
   padding: 0;
   backdrop-filter: blur(10px);
-  box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+  box-sizing: border-box;
 }
 
 .top-strip {
@@ -54,9 +54,8 @@ body {
 .content-container {
   display: flex;
   justify-content: space-between;
-  padding: 0 15px; /* Adjust padding to ensure it fits within mobile screens */
-  margin-top: 30px;
-  gap: 30px;
+  padding: 0 15px;
+  gap: 15;
   width: 100%;
   box-sizing: border-box;
 }
@@ -68,7 +67,7 @@ body {
   padding: 25px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+  box-sizing: border-box;
 }
 
 .enrollment-details:hover,
@@ -83,6 +82,35 @@ body {
 
 .payment-details {
   width: 35%;
+}
+
+.progress-bar-container {
+  width: 100%; /* Make it full-width */
+  display: flex;
+  justify-content: center; /* Center the progress bar */
+  margin-top: 15px;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 15px;
+  box-sizing: border-box;
+  min-height: 150px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.progress-bar {
+  background-color: #e0e0e0;
+  border-radius: 20px;
+  height: 12px;
+  width: 90%; /* Adjust width relative to container */
+  position: relative;
+  margin-top: 15px;
+}
+
+.progress {
+  background-color: #004246;
+  height: 100%;
+  border-radius: 20px;
+  transition: width 0.5s ease;
 }
 
 .enrollment-details h2,
@@ -157,33 +185,6 @@ body {
   font-style: italic;
 }
 
-.progress-bar-container {
-  margin-top: 15px;
-  padding: 25px;
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 15px;
-  width: 100%;
-  box-sizing: border-box;
-  min-height: 150px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.progress-bar {
-  background-color: #e0e0e0;
-  border-radius: 20px;
-  height: 12px;
-  width: 100%;
-  position: relative;
-  margin-top: 15px;
-}
-
-.progress {
-  background-color: #02BF91;
-  height: 100%;
-  border-radius: 20px;
-  transition: width 0.5s ease;
-}
-
 .progress-bar-container h3,
 .progress-bar-container p {
   color: #009378;
@@ -217,7 +218,7 @@ body {
 @media (max-width: 768px) {
   .content-container {
       flex-direction: column;
-      padding: 0 15px; /* Reduced padding for mobile */
+      padding: 0 15px;
   }
 
   .enrollment-details, 
@@ -231,5 +232,14 @@ body {
 
   .top-strip-heading {
       font-size: 22px;
+  }
+
+  .progress-bar-container {
+      width: 100%; /* Ensure full width on mobile as well */
+      padding: 20px; /* Adjust padding */
+  }
+
+  .progress-bar {
+      width: 100%; /* Full width for mobile */
   }
 }
