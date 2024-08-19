@@ -142,7 +142,7 @@ const EnrollmentForm = () => {
             </div>
         </div>
     </div>
-    );
+    )
 };
 
 export default EnrollmentForm;
