@@ -5,7 +5,7 @@ body {
   color: #ffffff;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #004246 25%, #009378 75%);
+  background: linear-gradient(135deg, #0e2a33 25%, #142d36 75%);
   background-size: cover;
 }
 
@@ -22,7 +22,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(135deg, #004246 0%, #009378 100%);
+  background: linear-gradient(135deg, #0a1e29 0%, #1c3b47 100%);
   padding: 25px;
   font-family: 'Manrope', sans-serif;
   border-radius: 20px;
@@ -41,7 +41,7 @@ body {
 .top-strip-heading {
   font-size: 28px;
   margin: 0;
-  color: #2DF8C5;
+  color: #00ff84;
   text-align: center;
   flex-grow: 1;
   letter-spacing: 1.5px;
@@ -57,7 +57,7 @@ body {
 
 .enrollment-details,
 .payment-details {
-  background: rgba(0, 66, 70, 0.85);
+  background: rgba(20, 45, 54, 0.85);
   border-radius: 15px;
   padding: 25px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
@@ -74,7 +74,7 @@ body {
 .payment-details h2 {
   font-size: 24px;
   margin-bottom: 20px;
-  color: #2DF8C5;
+  color: #00ff84;
   text-transform: uppercase;
   letter-spacing: 1.2px;
 }
@@ -88,7 +88,6 @@ body {
   margin-bottom: 8px;
   font-size: 16px;
   letter-spacing: 0.5px;
-  color: #02BF91;
 }
 
 .form-group input {
@@ -97,14 +96,14 @@ body {
   font-size: 16px;
   border: 1px solid #324a52;
   border-radius: 8px;
-  background-color: #009378;
+  background-color: #102a33;
   color: #ffffff;
   transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .form-group input:focus {
-  border-color: #2DF8C5;
-  background-color: #02BF91;
+  border-color: #00ff84;
+  background-color: #142d36;
   outline: none;
 }
 
@@ -114,8 +113,8 @@ body {
 }
 
 .payment-button button {
-  background-color: #2DF8C5;
-  color: #004246;
+  background-color: #00ff84;
+  color: #0e2a33;
   font-size: 16px;
   padding: 12px 30px;
   border: none;
@@ -125,13 +124,13 @@ body {
 }
 
 .payment-button button:hover {
-  background-color: #02BF91;
+  background-color: #00d472;
   transform: translateY(-3px);
 }
 
 .payment-note {
   font-size: 16px;
-  color: #FFFFFF;
+  color: #a0a0a0;
   margin-top: 20px;
   text-align: center;
   font-style: italic;
@@ -140,7 +139,7 @@ body {
 .progress-bar-container {
   margin-top: 15px;
   padding: 25px;
-  background: rgba(0, 66, 70, 0.85);
+  background: rgba(20, 45, 54, 0.85);
   border-radius: 15px;
   width: 100%; 
   box-sizing: border-box; 
@@ -149,7 +148,7 @@ body {
 }
 
 .progress-bar {
-  background-color: #004246;
+  background-color: #324a52;
   border-radius: 20px;
   height: 12px;
   width: 100%;
@@ -166,7 +165,7 @@ body {
 
 .progress-bar-container h3,
 .progress-bar-container p {
-  color: #2DF8C5;
+  color: #00ff84;
   margin: 0;
   padding: 0 10px;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
