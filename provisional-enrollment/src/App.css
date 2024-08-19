@@ -22,15 +22,16 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(135deg, #0a1e29 0%, #1c3b47 100%);
-  padding: 25px;
+  background: linear-gradient(135deg, #004246 0%, #009378 100%);
+  padding: 20px;
   font-family: 'Manrope', sans-serif;
-  border-radius: 20px;
+  border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
 }
 
 .top-strip .logo {
-  width: 80px;
+  width: 70px;
   transition: transform 0.3s ease;
 }
 
@@ -39,29 +40,29 @@ body {
 }
 
 .top-strip-heading {
-  font-size: 28px;
+  font-size: 26px;
   margin: 0;
-  color: #00ff84;
+  color: #ffffff;
   text-align: center;
   flex-grow: 1;
   letter-spacing: 1.5px;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .content-container {
   display: flex;
   justify-content: space-between;
-  padding: 30px;
-  gap: 30px;
+  padding: 25px;
+  gap: 25px;
 }
 
 .enrollment-details,
 .payment-details {
-  background: rgba(20, 45, 54, 0.85);
-  border-radius: 15px;
-  padding: 25px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #ffffff;
 }
 
 .enrollment-details:hover,
@@ -72,15 +73,15 @@ body {
 
 .enrollment-details h2,
 .payment-details h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #00ff84;
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #ffffff;
   text-transform: uppercase;
-  letter-spacing: 1.2px;
+  letter-spacing: 1px;
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .form-group label {
@@ -88,33 +89,34 @@ body {
   margin-bottom: 8px;
   font-size: 16px;
   letter-spacing: 0.5px;
+  color: #ffffff;
 }
 
 .form-group input {
   width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  border: 1px solid #324a52;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ffffff;
   border-radius: 8px;
-  background-color: #102a33;
+  background-color: #142d36;
   color: #ffffff;
   transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .form-group input:focus {
-  border-color: #00ff84;
+  border-color: #ffffff;
   background-color: #142d36;
   outline: none;
 }
 
 .payment-button {
   text-align: center;
-  margin-top: 25px;
+  margin-top: 20px;
 }
 
 .payment-button button {
-  background-color: #00ff84;
-  color: #0e2a33;
+  background-color: #ffffff;
+  color: #004246;
   font-size: 16px;
   padding: 12px 30px;
   border: none;
@@ -124,13 +126,13 @@ body {
 }
 
 .payment-button button:hover {
-  background-color: #00d472;
+  background-color: #02BF91;
   transform: translateY(-3px);
 }
 
 .payment-note {
   font-size: 16px;
-  color: #a0a0a0;
+  color: #ffffff;
   margin-top: 20px;
   text-align: center;
   font-style: italic;
@@ -139,16 +141,17 @@ body {
 .progress-bar-container {
   margin-top: 15px;
   padding: 25px;
-  background: rgba(20, 45, 54, 0.85);
-  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
   width: 100%; 
   box-sizing: border-box; 
   min-height: 150px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  color: #ffffff;
 }
 
 .progress-bar {
-  background-color: #324a52;
+  background-color: #ffffff;
   border-radius: 20px;
   height: 12px;
   width: 100%;
@@ -157,7 +160,7 @@ body {
 }
 
 .progress {
-  background-color: #3f51b5;
+  background-color: #009378;
   height: 100%;
   border-radius: 20px;
   transition: width 0.5s ease;
@@ -165,10 +168,9 @@ body {
 
 .progress-bar-container h3,
 .progress-bar-container p {
-  color: #00ff84;
+  color: #ffffff;
   margin: 0;
   padding: 0 10px;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
 }
 
 .progress-bar-container p {
@@ -182,19 +184,20 @@ body {
 @media (max-width: 768px) {
   .content-container {
       flex-direction: column;
-      padding: 20px;
+      padding: 15px;
   }
 
   .enrollment-details, 
   .payment-details {
       width: 100%;
+      margin: 0 auto;
   }
 
   .top-strip .logo {
-      width: 60px;
+      width: 50px;
   }
 
   .top-strip-heading {
-      font-size: 22px;
+      font-size: 20px;
   }
 }
