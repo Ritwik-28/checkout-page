@@ -89,8 +89,8 @@ const EnrollmentForm = () => {
                 <div className="enrollment-details">
                     <h2>Secure Your Spot in Crio.Do's Next Batch with Provisional Enrollment!</h2>
                         <ul>
-                             <li><strong>Lock in Your Seat Today!</strong></li>
-                             <li><strong>Limited Spots Available—Act Fast to Reserve Yours!</strong></li>
+                             <li>Lock in Your Seat Today!</li>
+                             <li>Limited Spots Available—Act Fast to Reserve Yours!</li>
                         </ul>
                     <p>By choosing Crio.Do's Provisional Enrollment, you guarantee a place in our upcoming batch. Don't miss this chance to jumpstart your tech career with us. Enroll now and access our world-class training program.</p>
                     <h3>Terms and Conditions:</h3>
