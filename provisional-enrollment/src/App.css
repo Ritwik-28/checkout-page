@@ -59,9 +59,10 @@ body {
   padding: 0 15px;
   margin-top: 30px;
   margin-bottom: 30px;
-  gap: 15px; 
+  gap: 15px;
   width: 100%;
   box-sizing: border-box;
+  flex-wrap: wrap;
 }
 
 .enrollment-details,
@@ -82,11 +83,17 @@ body {
 }
 
 .enrollment-details {
-  width: 60%;
+  width: 60%; /* Maintains the original width */
 }
 
 .payment-details {
-  width: 35%;
+  width: 35%; /* Reduced width */
+  padding: 15px 25px;
+  margin-bottom: 15px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
 }
 
 .enrollment-details h2,
@@ -162,14 +169,12 @@ body {
 }
 
 .progress-bar-container {
-  margin-top: 15px;
-  padding: 25px;
+  width: 35%; /* Same width as payment details */
+  padding: 15px 25px;
   background: rgba(255, 255, 255, 0.85);
   border-radius: 15px;
-  width: 100%;
-  box-sizing: border-box;
-  min-height: 150px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
 }
 
 .progress-bar {

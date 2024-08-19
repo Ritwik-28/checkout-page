@@ -131,7 +131,7 @@ const EnrollmentForm = () => {
                         Note: By clicking "Pay Now", you confirm your provisional enrollment. Please ensure your contact details are accurate. Our counsellor will get in touch with you to assist you with the further process.
                     </p>
                 </div>
-            </div>
+           
             <div className="progress-bar-container">
                 <h3>Enrollments Done Till Now:</h3>
                 <div className="progress-bar">
@@ -140,6 +140,7 @@ const EnrollmentForm = () => {
                 </div>
             </div>
         </div>
+    </div>
     );
 };
 
